@@ -14,11 +14,14 @@ export default function PdfViewer({fileUrl}: Props) {
     const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
     return (
-        <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
-            <Viewer
-                fileUrl={fileUrl}
-                plugins={[defaultLayoutPluginInstance]}
-            />
-        </Worker>
+        <div style={{ height: '100vh', overflow: 'auto' }}>
+            <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
+                <Viewer
+                    fileUrl={fileUrl}
+                    plugins={[defaultLayoutPluginInstance]}
+                />
+            </Worker>
+        </div>
+
     );
 }
