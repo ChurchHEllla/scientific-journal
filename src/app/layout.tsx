@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import styles from "@/app/page.module.css";
+import {Header} from "@components/Header/Header";
+import {SidebarMenu} from "@components/SidebarMenu/SidebarMenu";
+import {sidebarMenuData} from "@data/SidebarMenuData";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,7 +28,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+      <body>
+      <div className={styles.page}>
+          {/* Шапка с логотипом */}
+          <Header></Header>
+          {/* Основная часть: Сайдбар + Контент */}
+          <div className={styles.container}>
+              <aside className={styles.sidebarWrapper}>
+                  <SidebarMenu items={sidebarMenuData} />
+              </aside>
+
+              <main className={styles.mainContent}>
+                  <div className={styles.intro}>
+                      {children}
+                  </div>
+              </main>
+          </div>
+      </div>
+      </body>
     </html>
   );
 }

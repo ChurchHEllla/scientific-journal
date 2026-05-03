@@ -1,0 +1,11 @@
+.header {
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 1px solid var(--sidebar-border); /* Легкая линия под шапкой */
+    background-color: #fff;
+}
+
+.logo {
+    max-height: 60px;
+    width: auto;
+}
