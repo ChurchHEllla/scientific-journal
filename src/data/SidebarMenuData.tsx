@@ -36,12 +36,10 @@ export const sidebarMenuData = [
     },
     {
         id: 'bird',
-        label: 'Синичка',
+        label: 'Птичка',
         href: '/journals/bird',
         children: [
-            { id: 'editorial', label: 'Редколлегия журнала', href: '/prospects/editorial' },
-            { id: 'authors', label: 'Для авторов и подписчиков', href: '/prospects/authors' },
-            { id: 'retraction', label: 'Условия Ретрагирования', href: '/prospects/retraction' },
+            { id: 'editorial', label: 'Редколлегия журнала', href: '/journals/bird' },
         ]
     }
 ];
