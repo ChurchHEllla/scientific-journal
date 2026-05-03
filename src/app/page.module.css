@@ -1,142 +1,73 @@
+/* app/page.module.css */
+
 .page {
-  --background: #fafafa;
-  --foreground: #fff;
+    /* Светлая тема по умолчанию */
+    --background: #ffffff;       /* Белый фон всей страницы */
+    --foreground: #171717;       /* Почти черный текст для контраста */
 
-  --text-primary: #000;
-  --text-secondary: #666;
+    --sidebar-bg: #f9fafb;       /* Очень светло-серый фон для сайдбара */
+    --sidebar-border: #e5e7eb;   /* Тонкая рамка разделителя */
 
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
+    --text-primary: #111827;     /* Основной текст заголовков */
+    --text-secondary: #6b7280;   /* Второстепенный текст (описания) */
 
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
+    --accent-color: #2563eb;     /* Акцентный синий цвет (для ссылок/кнопок) */
+    --accent-hover: #1d4ed8;     /* Темнее при наведении */
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;           /* Минимальная высота во весь экран */
+    background-color: var(--background);
+    color: var(--foreground);
 }
 
-.main {
-  display: flex;
-  flex: 1;
-  width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
+.mainContent {
+    flex: 1;                     /* Занимает остальное пространство */
+    padding: 40px;
+    overflow-y: auto;            /* Скролл основного контента */
+    background-color: var(--background);
 }
 
-.intro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
-}
-
+/* Стили для типографики внутри mainContent (если будете добавлять текст) */
 .intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
 }
 
 .intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 60ch;             /* Оптимальная длина строки для чтения */
 }
 
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
+.container {
+    display: flex;
+    flex: 1;                     /* Занимает все оставшееся место */
+    overflow: hidden;            /* Чтобы скроллился только контент, если нужно */
 }
 
-.ctas {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
+.sidebarWrapper {
+    width: 300px;                /* Фиксированная ширина сайдбара */
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--sidebar-border);
+    overflow-y: auto;            /* Скролл внутри сайдбара, если меню длинное */
+    padding: 20px 0;
+    flex-shrink: 0;              /* Не сжимать сайдбар */
 }
 
-.ctas a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
-}
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
-}
-
-a.secondary {
-  border-color: var(--button-secondary-border);
-}
-
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
-}
-
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
-
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
-  }
+    .sidebarWrapper {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--sidebar-border);
+    }
 }
