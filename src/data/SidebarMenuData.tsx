@@ -41,5 +41,17 @@ export const sidebarMenuData = [
         children: [
             { id: 'editorial', label: 'Редколлегия журнала', href: '/journals/bird' },
         ]
-    }
+    },
+    {
+        id: 'journal-info',
+        label: 'Информация',
+        href: '/journals/journal-info',
+        children: [
+            { id: 'about-journal', label: 'О журнале', href: '/journals/about-journal' },
+            { id: 'editorial-board', label: 'Редакционная коллегия', href: '/journals/editorial' },
+            { id: 'bibliometrics', label: 'Библиометрия редколлегии', href: '/journals/bibliometrics' },
+            { id: 'address', label: 'Адрес редакции', href: '/journals/address' },
+            { id: 'rinc-rating', label: 'Рейтинг журнала в РИНЦ', href: '/journals/rinc-rating' },
+        ]
+    },
 ];
