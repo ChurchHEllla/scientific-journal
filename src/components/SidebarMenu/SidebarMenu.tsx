@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'; // Используем роуте�
 import styles from './SidebarMenu.module.css';
 import {MenuItem} from "@/models/SidebarMenu";
 
-interface SidebarMenuProps {
+type SidebarMenuProps = {
     items: MenuItem[];
 }
 

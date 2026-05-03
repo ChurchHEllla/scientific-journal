@@ -7,7 +7,6 @@ export const sidebarMenuData = [
             {
                 id: '2023',
                 label: '2023',
-                href: '/journals/2023',
                 children: [
                     {
                         id: '1-2023',
@@ -37,7 +36,7 @@ export const sidebarMenuData = [
     {
         id: 'bird',
         label: 'Птичка',
-        href: '/journals/bird',
+        href: '/',
         children: [
             { id: 'editorial', label: 'Редколлегия журнала', href: '/journals/bird' },
         ]
