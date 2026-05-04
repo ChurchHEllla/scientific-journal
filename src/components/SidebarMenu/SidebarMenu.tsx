@@ -6,11 +6,8 @@ import { useRouter } from 'next/navigation'; // Используем роуте�
 import styles from './SidebarMenu.module.css';
 import {MenuItem} from "@/models/SidebarMenu";
 
-type SidebarMenuProps = {
-    items: MenuItem[];
-}
 
-export const SidebarMenu: React.FC<SidebarMenuProps> = ({ items }) => {
+export default function SidebarMenu({ items }: {items: MenuItem[]}) {
     return (
         <nav className={styles.sidebar}>
             <ul className={styles.menuList}>
@@ -22,10 +19,7 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({ items }) => {
     );
 };
 
-const SidebarMenuItem: React.FC<{ item: MenuItem; level?: number }> = ({
-       item,
-       level = 0
-   }) => {
+export function SidebarMenuItem({item, level = 0}: { item: MenuItem; level?: number; }) {
     const router = useRouter(); // Хук для навигации
     const [isOpen, setIsOpen] = useState(false);
     const hasChildren = item.children && item.children.length > 0;
@@ -93,4 +87,4 @@ const SidebarMenuItem: React.FC<{ item: MenuItem; level?: number }> = ({
             )}
         </li>
     );
-};
+}

@@ -9,6 +9,7 @@ type MenuItem = {
 /**
  * Рекурсивно ищет элемент меню по ID во всей древовидной структуре
  */
+
 export function findMenuItemById(
     items: MenuItem[],
     targetId: string
@@ -22,22 +23,6 @@ export function findMenuItemById(
             if (found) {
                 return found;
             }
-        }
-    }
-    return undefined;
-}
-
-export function findMenuItemByHref(
-    items: MenuItem[],
-    targetHref: string
-): MenuItem | undefined {
-    for (const item of items) {
-        if (item.href === targetHref) {
-            return item;
-        }
-        if (item.children?.length) {
-            const found = findMenuItemByHref(item.children, targetHref);
-            if (found) return found;
         }
     }
     return undefined;
