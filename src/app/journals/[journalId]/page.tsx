@@ -1,4 +1,4 @@
-import { sidebarMenuData } from '@data/SidebarMenuData';
+import { sidebarMenuData } from '@data/sidebar/sidebarMenuData';
 import {findMenuItemById} from "@/lib/findMenuItemByHref";
 import PdfViewer from '@components/PdfViewer';
 
@@ -19,7 +19,6 @@ export default async function JournalPage({ params }: Props) {
     if (!journal) {
         return <div>Журнал не найден</div>;
     }
-
     return (
         <div>
             <h1>{journal?.label}</h1>

@@ -4,7 +4,7 @@ import "./globals.css";
 import styles from "@/app/page.module.css";
 import Header from "@components/Header/Header";
 import SidebarMenu from "@components/SidebarMenu/SidebarMenu";
-import {sidebarMenuData} from "@data/SidebarMenuData";
+import {sidebarMenuData} from "@data/sidebar/sidebarMenuData";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
