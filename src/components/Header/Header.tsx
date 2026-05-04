@@ -1,6 +1,6 @@
 import styles from "./Header.module.css";
 
-export const Header: React.FC = () => {
+export default function Header(){
     return (
         <header className={styles.header}>
             <img
