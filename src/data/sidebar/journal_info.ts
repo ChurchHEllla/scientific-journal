@@ -5,6 +5,7 @@ export const journal_info: MenuItem = {
     label: 'Информация',
     href: '/journals/journal-info',
     children: [
+        {id: 'back-to-basics', label: 'Старый сайт', href: 'https://lib.madi.ru/nitdo/index.html'},
         {id: 'about-journal', label: 'О журнале', href: '/journals/about-journal'},
         {id: 'editorial-board', label: 'Редакционная коллегия', href: '/journals/editorial'},
         {id: 'bibliometrics', label: 'Библиометрия редколлегии', href: '/journals/bibliometrics'},
