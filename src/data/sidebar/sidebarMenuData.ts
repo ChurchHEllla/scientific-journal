@@ -1,4 +1,4 @@
-import {MenuItem} from "@/models/SidebarMenu";
+import {MenuItem} from "@/models/sidebarMenu";
 import {journals} from "@data/sidebar/journals";
 import {journal_info} from "@data/sidebar/journal_info";
 

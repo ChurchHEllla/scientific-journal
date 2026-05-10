@@ -1,4 +1,4 @@
-import {MenuItem} from "@/models/SidebarMenu";
+import {MenuItem} from "@/models/sidebarMenu";
 
 export const journal_info: MenuItem = {
     id: 'journal-info',

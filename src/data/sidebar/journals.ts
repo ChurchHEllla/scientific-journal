@@ -1,4 +1,4 @@
-import {MenuItem} from "@/models/SidebarMenu";
+import {MenuItem} from "@/models/sidebarMenu";
 
 //Перенести на бэкенд?
 

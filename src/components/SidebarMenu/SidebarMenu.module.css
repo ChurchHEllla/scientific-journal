@@ -75,7 +75,6 @@
 .labelButton:hover {
     background-color: #e5e7eb; /* Более заметный фон при наведении */
     color: #000000;
-    transform: scale(1.05);
 }
 
 /* Просто текст (если нет ссылки) */
@@ -117,7 +116,6 @@
 .leafButton:hover {
     background-color: #f9fafb;
     color: #0a0c12; /* Черный при наведении */
-    transform: scale(1.05);
 }
 
 .leafArrow {
