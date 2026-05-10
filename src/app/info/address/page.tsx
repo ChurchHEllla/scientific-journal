@@ -23,6 +23,10 @@ export default function AddressPage() {
                     </tr>
                 </tbody>
             </table>
+            <br/>
+            <p>
+                125319, Москва, Ленинградский проспект, 64, комн. 815н.
+            </p>
         </div>
     )
 }
