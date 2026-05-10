@@ -50,7 +50,7 @@
 }
 
 .sidebarWrapper {
-    width: 300px;                /* Фиксированная ширина сайдбара */
+    width: 270px;                /* Фиксированная ширина сайдбара */
     background-color: var(--sidebar-bg);
     border-right: 1px solid var(--sidebar-border);
     overflow-y: auto;            /* Скролл внутри сайдбара, если меню длинное */

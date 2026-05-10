@@ -30,11 +30,11 @@ export function SidebarMenuItem({item, level = 0}: { item: MenuItem; level?: num
         setIsOpen(!isOpen);
     };
 
-    const handleNavigate = () => {
+    /*const handleNavigate = () => {
         if (item.href) {
             router.push(item.href); // Навигация без перезагрузки страницы
         }
-    };
+    };*/
 
     return (
         <li className={styles.menuItem} style={{ paddingLeft: `${level * 20}px` }}>
@@ -51,11 +51,11 @@ export function SidebarMenuItem({item, level = 0}: { item: MenuItem; level?: num
                         </button>
 
                         {/* Текст названия журнала. Если есть href - делаем кликабельным */}
-                        {item.href ? (
+                        {item.children ? (
                             <button
                                 type="button"
                                 className={styles.labelButton}
-                                onClick={handleNavigate}
+                                onClick={handleToggle}
                             >
                                 {item.label}
                             </button>

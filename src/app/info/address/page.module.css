@@ -1,0 +1,21 @@
+.link {
+    color: #0056b3;
+}
+
+.link:hover {
+    color: #003d80;
+    text-decoration: underline;
+}
+
+.tableBordered {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tableBordered td,
+.tableBordered th {
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 20%;
+    text-align: center;
+}

@@ -1,7 +1,6 @@
 import {ArticleItem} from "@/models/articles";
 import {useState} from "react";
 import styles from "./JournalItem.module.css"
-
 export default function JournalItem({a}: {a: ArticleItem}) {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -17,22 +16,33 @@ export default function JournalItem({a}: {a: ArticleItem}) {
             >
                 {a.articleItemTitle}
             </a>
-           <p style={{textAlign: 'justify'}}>
+           <p style={{textAlign: 'justify', marginBottom: '10px'}}>
                <b>Авторы:</b>
            </p>
            {a.authors.map(author => (
-               <p key={author.fullName}>
+               <p style={{textAlign: 'justify'}} key={author.fullName}>
                    <b>{author.fullName}, </b>
                    {author.bio}, <a className={styles.link} href={'mailto:' + author.email}>{author.email}</a>
                </p>
            ))}
 
            <div className={`${styles.content} ${isOpen ? styles.open : ''}`}>
-                <p style={{textAlign: 'justify'}}>
+                <div style={{textAlign: 'justify'}}>
                     <b>Аннотация:</b>
                     <br/>
                     <i>{a.abstract}</i>
-                </p>
+                </div>
+               <br/>
+               <div style={{textAlign: 'justify'}}>
+                    <b>Список литературы</b>
+                    <br/>
+                </div>
+               <ol>
+                    {a.references.map((ref, index) => (
+                        <li key={index}>{index+1}. {ref}</li>
+                    ))}
+               </ol>
+
            </div>
        </div>
     )

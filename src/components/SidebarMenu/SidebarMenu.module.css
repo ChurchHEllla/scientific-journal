@@ -74,8 +74,10 @@
 
 .labelButton:hover {
     background-color: #e5e7eb; /* Более заметный фон при наведении */
-    color: #000000;
+    color: #000000;    /*
     transform: scale(1.02);
+    */
+
 }
 
 /* Просто текст (если нет ссылки) */
@@ -109,7 +111,7 @@
     padding: 8px 12px;
     font-size: 15px;
     /* Цвет текста чуть светлее, чем у заголовков */
-    color: #4b5563;
+    color: #1c1d30;
     transition: background-color 0.2s, color 0.2s, transform 0.2s ease;
     border-radius: 4px;
 }
@@ -117,8 +119,10 @@
 .leafButton:hover {
     background-color: #f9fafb;
     color: #0a0c12; /* Черный при наведении */
+}    /*
     transform: scale(1.02);
-}
+    */
+
 
 .leafArrow {
     margin-right: 8px;

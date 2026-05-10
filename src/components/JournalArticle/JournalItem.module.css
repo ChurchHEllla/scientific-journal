@@ -2,11 +2,12 @@
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-
-    transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
+    transition: max-height 0.1s ease-out, opacity 0.2s ease-out;
+    width: 100%;          /* Занимает всю доступную ширину */
+    box-sizing: border-box; /* Чтобы padding не увеличивал ширину */
 }
 .content.open {
-    max-height: 200px; /* Или max-height: 1000px */
+    max-height: 2000px; /* Или max-height: 1000px */
     opacity: 1;
 }
 .labelLink{
@@ -15,6 +16,7 @@
     display: flex;
     justify-content: space-between;
     transition: color 0.2s;
+    margin-top: 30px;
 }
 .link {
     color: #0056b3;

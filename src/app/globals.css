@@ -30,7 +30,17 @@ body {
   margin: 0;
 }
 
+/*Ставлю чтобы можно было спокойно менять тэг под себя*/
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.link {
+    color: #0056b3;
+}
+
+.link:hover {
+    color: #003d80;
+    text-decoration: underline;
 }
