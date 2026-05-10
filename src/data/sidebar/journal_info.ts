@@ -1,15 +1,14 @@
-import {MenuItem} from "@/models/sidebarMenu";
+import {MenuItem} from "@/models/sidebar_menu";
 
-export const journal_info: MenuItem = {
+export const journalInfo: MenuItem = {
     id: 'journal-info',
     label: 'Информация',
-    href: '/journals/journal-info',
+    href: '/info/journal-info',
     children: [
-        {id: 'back-to-basics', label: 'Старый сайт', href: 'https://lib.madi.ru/nitdo/index.html'},
-        {id: 'about-journal', label: 'О журнале', href: '/journals/about-journal'},
-        {id: 'editorial-board', label: 'Редакционная коллегия', href: '/journals/editorial-board'},
-        {id: 'bibliometrics', label: 'Библиометрия редколлегии', href: '/journals/bibliometrics'},
-        {id: 'address', label: 'Адрес редакции', href: '/journals/address'},
-        {id: 'rinc-rating', label: 'Рейтинг журнала в РИНЦ', href: '/journals/rinc-rating'},
+        {id: 'about', label: 'О журнале', href: '/info'},
+        {id: 'editorial_board', label: 'Редакционная коллегия', href: '/info/editorial_board'},
+        {id: 'address', label: 'Адрес редакции', href: '/info/address'},
+        {id: 'sections', label: 'Разделы', href: '/info/sections'},
+        {id: 'subscription', label: 'Как подписаться на журнал', href: '/info/subscription'}
     ]
 }

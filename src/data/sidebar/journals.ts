@@ -1,4 +1,4 @@
-import {MenuItem} from "@/models/sidebarMenu";
+import {MenuItem} from "@/models/sidebar_menu";
 
 //Перенести на бэкенд?
 
@@ -35,5 +35,6 @@ export const journals: MenuItem = {
                 }
             ]
         },
+
     ],
 }

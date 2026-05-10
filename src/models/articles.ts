@@ -26,6 +26,7 @@ export interface ArticleItem {
 }
 
 export interface Author {
-   name: string;
+   fullName: string;
    bio: string;
+   email?: string;
 }

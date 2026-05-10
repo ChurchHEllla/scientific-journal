@@ -1,0 +1,26 @@
+.content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+
+    transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
+}
+.content.open {
+    max-height: 200px; /* Или max-height: 1000px */
+    opacity: 1;
+}
+.labelLink{
+    font-weight: bold;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    transition: color 0.2s;
+}
+.link {
+    color: #0056b3;
+}
+
+.link:hover {
+    color: #003d80;
+    text-decoration: underline;
+}

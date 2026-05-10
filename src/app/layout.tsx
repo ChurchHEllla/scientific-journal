@@ -4,7 +4,7 @@ import "./globals.css";
 import styles from "@/app/page.module.css";
 import Header from "@components/Header/Header";
 import SidebarMenu from "@components/SidebarMenu/SidebarMenu";
-import {sidebarMenuData} from "@data/sidebar/sidebarMenuData";
+import {sidebar_menu_data} from "@data/sidebar/sidebar_menu_data";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,7 +35,7 @@ export default function RootLayout({
           {/* Основная часть: Сайдбар + Контент */}
           <div className={styles.container}>
               <aside className={styles.sidebarWrapper}>
-                  <SidebarMenu items={sidebarMenuData} />
+                  <SidebarMenu items={sidebar_menu_data} />
               </aside>
 
               <main className={styles.mainContent}>

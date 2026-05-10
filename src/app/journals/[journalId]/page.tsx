@@ -1,9 +1,8 @@
-import { sidebarMenuData } from '@data/sidebar/sidebarMenuData';
-import {findMenuItemById} from "@/utils/findMenuItemByHref";
-import PdfViewer from '@components/PdfViewer';
+import { sidebar_menu_data } from '@data/sidebar/sidebar_menu_data';
+import {findMenuItemById} from "@/utils/find_menu_item";
 import {mockArticle} from "@/articles/journals/article_1";
 import {Article} from "@/models/articles";
-import JournalArticle from "@components/JournalArticle";
+import JournalArticle from "@components/JournalArticle/JournalArticle";
 
 interface Props {
     params: Promise<{
@@ -17,17 +16,15 @@ export default async function JournalPage({ params }: Props) {
     const article: Article = mockArticle
 
     // 1. Ищем данные журнала в вашем массиве по ID
-    const journal = findMenuItemById(sidebarMenuData, journalId);
+    const journal = findMenuItemById(sidebar_menu_data, journalId);
     // 2. Если журнал не найден (например, пользователь ввел несуществующий ID)
     if (!journal) {
         return <div>art</div>;
     }
     return (
         <div>
-            <h1>{journal?.label}</h1>
-            <JournalArticle a={article}/>
             <p>Это страница журнала с ID: {journalId}</p>
-            <PdfViewer fileUrl="/assets/about.pdf"/>
+            <JournalArticle a={article}/>
         </div>
 
     );
