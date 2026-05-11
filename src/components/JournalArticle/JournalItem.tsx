@@ -3,7 +3,6 @@ import {useState} from "react";
 import styles from "./JournalItem.module.css"
 export default function JournalItem({a}: {a: ArticleItem}) {
     const [isOpen, setIsOpen] = useState(false);
-
     return(
        <div>
             <a

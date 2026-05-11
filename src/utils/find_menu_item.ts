@@ -1,14 +1,8 @@
-// Типизация элемента меню
-interface MenuItem {
-    id: string;
-    label: string;
-    href?: string;
-    children?: MenuItem[];
-}
-
 /**
  * Рекурсивно ищет элемент меню по ID во всей древовидной структуре
  */
+import {MenuItem} from "@/models/sidebar_menu";
+
 
 export function findMenuItemById(
     items: MenuItem[],

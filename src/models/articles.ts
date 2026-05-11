@@ -20,7 +20,7 @@ export interface ArticleItem {
     articleItemTitle: string;
     authors: Author[];
     abstract: string;
-    keywords: string[];
+    keywords?: string[];
     references: string[];
 
 }

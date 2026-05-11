@@ -1,10 +1,14 @@
 import { editors } from "@data/editors";
-
+import styles from './page.module.css'
 export default function EditorPage() {
     return (
         <div style={{maxWidth: '900px', margin: '0 auto', padding: '20px' }}>
 
-            <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '40px' }}>
+            <h2 style={{ fontSize: '20px', fontWeight: 'bold', marginTop: '40px', marginBottom: '20px' }}>
+                Члены:
+            </h2>
+
+            <table className={styles.tableBordered} style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '40px' }}>
                 <tbody>
                 {editors.chiefEditors.map((editor, index) => (
                     <tr key={index}>
@@ -26,7 +30,7 @@ export default function EditorPage() {
                 Члены редакционной коллегии:
             </h2>
 
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <table className={styles.tableBordered} style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <tbody style={{border: '1px'}}>
                 {editors.editorialCouncil.map((editor, index) => (
                     <tr key={index} style={{ borderBottom: '1px solid #ddd' }}>
