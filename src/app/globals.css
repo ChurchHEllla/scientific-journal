@@ -31,10 +31,10 @@ body {
 }
 
 /*Ставлю чтобы можно было спокойно менять тэг под себя*/
-a {
+/*a {
   color: inherit;
   text-decoration: none;
-}
+}*/
 
 .link {
     color: #0056b3;

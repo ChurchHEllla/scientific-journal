@@ -6,3 +6,8 @@
     color: #003d80;
     text-decoration: underline;
 }
+.container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
