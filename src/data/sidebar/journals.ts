@@ -1,9 +1,10 @@
-import {MenuItem} from "@/models/sidebar_menu";
+import { MenuItem } from "@/models/sidebar_menu"
 
-//Перенести на бэкенд?
+// Перенести на бэкенд?
+
+const journals_base = '/journals'
 
 export const journals: MenuItem = {
-
     id: 'journal-prospects',
     label: 'Выпуски журнала',
     href: '/',
@@ -15,7 +16,7 @@ export const journals: MenuItem = {
                 {
                     id: '1-2023',
                     label: '1-2023',
-                    href: '/journals/1-2023'
+                    href: `${journals_base}/1-2023`
                 }
             ]
         },
@@ -26,15 +27,14 @@ export const journals: MenuItem = {
                 {
                     id: '2-2022',
                     label: '2-2022',
-                    href: '/journals/2-2022'
+                    href: `${journals_base}/2-2022`
                 },
                 {
                     id: '1-2022',
                     label: '1-2022',
-                    href: '/journals/1-2022'
+                    href: `${journals_base}/1-2022`
                 }
             ]
-        },
-
+        }
     ],
 }

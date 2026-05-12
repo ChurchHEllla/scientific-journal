@@ -2,10 +2,11 @@
 
 import DocxViewer from "@components/DocxViewer";
 import styles from "./page.module.css"
-import sharedStyles from "@/styles/shared/styles.module.css"
+import sharedStyles from "@/shared/styles/styles.module.css"
 import {useState} from "react";
 export default function ExamplePage() {
     const [isOpen, setIsOpen] = useState(true);
+
     return (
         <div>
             <div className={styles.container}>
@@ -17,7 +18,13 @@ export default function ExamplePage() {
                 >
                     Скачать пример
                 </a>
-
+                <a
+                    className={sharedStyles.link}
+                    href={'/view?file=example.docx'}
+                    target={'_blank'}
+                >
+                    Перейти посмотреть
+                </a>
                 <a
                     className={sharedStyles.link}
                     onClick={(e) => {

@@ -1,7 +1,7 @@
 import {ArticleItem} from "@/models/articles";
 import {useState} from "react";
 import styles from "./JournalItem.module.css"
-import sharedStyles from "@/styles/shared/styles.module.css"
+import sharedStyles from "@/shared/styles/styles.module.css"
 
 export default function JournalItem({a}: {a: ArticleItem}) {
     const [isOpen, setIsOpen] = useState(false);

@@ -1,7 +1,7 @@
 import styles from "./page.module.css"
-import sharedStyles from "@/styles/shared/styles.module.css"
+import sharedStyles from "@/shared/styles/styles.module.css"
 import {StaffMember} from "@/models/address"
-import {addressData} from "@/data/address"
+import {addressData} from "@data/address"
 export default function AddressPage() {
     return (
         <div>
