@@ -1,4 +1,5 @@
 import styles from "./page.module.css"
+import sharedStyles from "@/styles/shared/styles.module.css"
 import {StaffMember} from "@/models/address"
 import {addressData} from "@/data/address"
 export default function AddressPage() {
@@ -23,7 +24,7 @@ export default function AddressPage() {
                             <td>{person.fullName}</td>
                             <td>{person.roomNumber}</td>
                             <td>
-                                <a className={styles.link} href={`mailto:${person.email}`}>
+                                <a className={sharedStyles.link} href={`mailto:${person.email}`}>
                                     {person.email}
                                 </a>
                             </td>
@@ -38,7 +39,7 @@ export default function AddressPage() {
                 <p>{addressData.address}</p>
 
                 {/* 4. Ссылка на сайт */}
-                <a className={styles.link} href={addressData.url} target="_blank" rel="noopener noreferrer">
+                <a className={sharedStyles.link} href={addressData.url} target="_blank" rel="noopener noreferrer">
                     Перейти на сайт МАДИ
                 </a>
             </div>

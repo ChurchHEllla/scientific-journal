@@ -1,6 +1,8 @@
 import {ArticleItem} from "@/models/articles";
 import {useState} from "react";
 import styles from "./JournalItem.module.css"
+import sharedStyles from "@/styles/shared/styles.module.css"
+
 export default function JournalItem({a}: {a: ArticleItem}) {
     const [isOpen, setIsOpen] = useState(false);
     return(
@@ -11,7 +13,7 @@ export default function JournalItem({a}: {a: ArticleItem}) {
                     setIsOpen(!isOpen)
                 }}
                 aria-expanded={isOpen}
-                className={`${styles.link} ${styles.labelLink}`}
+                className={`${sharedStyles.link} ${styles.labelLink}`}
             >
                 {a.articleItemTitle}
             </a>
@@ -21,7 +23,7 @@ export default function JournalItem({a}: {a: ArticleItem}) {
            {a.authors.map(author => (
                <p style={{textAlign: 'justify'}} key={author.fullName}>
                    <b>{author.fullName}, </b>
-                   {author.bio}, <a className={styles.link} href={'mailto:' + author.email}>{author.email}</a>
+                   {author.bio}, <a className={sharedStyles.link} href={'mailto:' + author.email}>{author.email}</a>
                </p>
            ))}
 

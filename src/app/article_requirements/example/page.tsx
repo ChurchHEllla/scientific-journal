@@ -2,6 +2,7 @@
 
 import DocxViewer from "@components/DocxViewer";
 import styles from "./page.module.css"
+import sharedStyles from "@/styles/shared/styles.module.css"
 import {useState} from "react";
 export default function ExamplePage() {
     const [isOpen, setIsOpen] = useState(true);
@@ -11,14 +12,14 @@ export default function ExamplePage() {
                 <h3>Временное решение</h3>
 
                 <a
-                    className={styles.link} href={"/assets/example.docx"}
+                    className={sharedStyles.link} href={"/assets/example.docx"}
                     download={'example.docx'}
                 >
                     Скачать пример
                 </a>
 
                 <a
-                    className={styles.link}
+                    className={sharedStyles.link}
                     onClick={(e) => {
                         setIsOpen(!isOpen); e.preventDefault();
                     }
