@@ -1,7 +1,7 @@
 /**
  * Рекурсивно ищет элемент меню по ID во всей древовидной структуре
  */
-import {MenuItem} from "@/models/sidebar_menu";
+import type {MenuItem} from "@/models/sidebar_menu";
 
 
 export function findMenuItemById(

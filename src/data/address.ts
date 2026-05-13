@@ -1,4 +1,4 @@
-import {ContactInfo} from "@/models/address";
+import type {ContactInfo} from "@/models/address";
 
 export const addressData: ContactInfo = {
     url: "https://madi.ru/", // Опционально

@@ -1,8 +1,8 @@
 'use client'
 
-import {Article, ArticleGroup, ArticleItem} from "@/models/articles";
+import type {Journal, ArticleGroup, ArticleItem} from "@/models/articles";
 import JournalItem from "@components/JournalArticle/JournalItem";
-export default function JournalArticle({a}: {a: Article}) {
+export default function JournalArticle({a}: {a: Journal}) {
     return (
             <div>
                 <h1 style={{textAlign: 'center'}}>{a.articleTitle}</h1>

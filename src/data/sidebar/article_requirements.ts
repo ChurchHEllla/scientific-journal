@@ -1,4 +1,4 @@
-import { MenuItem } from "@/models/sidebar_menu"
+import type { MenuItem } from "@/models/sidebar_menu"
 
 const article_requirements_base = '/article_requirements'
 

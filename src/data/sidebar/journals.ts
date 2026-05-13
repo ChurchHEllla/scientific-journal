@@ -1,4 +1,4 @@
-import { MenuItem } from "@/models/sidebar_menu"
+import type { MenuItem } from "@/models/sidebar_menu"
 
 // Перенести на бэкенд?
 
@@ -14,27 +14,27 @@ export const journals: MenuItem = {
             label: '2023',
             children: [
                 {
+                    id: '2-2023',
+                    label: '2-2023',
+                    href: `${journals_base}/2-2023`
+                },
+                {
                     id: '1-2023',
-                    label: '1-2023',
+                    label: '1-2022',
                     href: `${journals_base}/1-2023`
                 }
             ]
         },
         {
-            id: '2022',
-            label: '2022',
+            id: '2024',
+            label: '2024',
             children: [
                 {
-                    id: '2-2022',
-                    label: '2-2022',
-                    href: `${journals_base}/2-2022`
-                },
-                {
-                    id: '1-2022',
-                    label: '1-2022',
-                    href: `${journals_base}/1-2022`
+                    id: '1-2024',
+                    label: '1-2024',
+                    href: `${journals_base}/1-2024`
                 }
             ]
-        }
+        },
     ],
 }

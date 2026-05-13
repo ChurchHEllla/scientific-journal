@@ -1,5 +1,6 @@
 import DocxViewer from "@components/DocxViewer";
-import {SearchParams} from "next/dist/server/request/search-params";
+import type {SearchParams} from "next/dist/server/request/search-params";
+
 export default async function ViewPage({searchParams}: {searchParams: SearchParams}) {
 
     const file = (await searchParams).file

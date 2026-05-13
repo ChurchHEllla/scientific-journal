@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'; // Используем роутер Next.js для навигации без перезагрузки
 import styles from './SidebarMenu.module.css';
-import {MenuItem} from "@/models/sidebar_menu";
+import type {MenuItem} from "@/models/sidebar_menu";
 
 
 export default function SidebarMenu({ items }: {items: MenuItem[]}) {

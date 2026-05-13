@@ -1,4 +1,4 @@
-import {EditorialTeam} from "@/models/editors";
+import type {EditorialTeam} from "@/models/editors";
 
 export const editors: EditorialTeam = {
     chiefEditors: [

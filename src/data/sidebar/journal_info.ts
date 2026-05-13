@@ -1,4 +1,4 @@
-import {MenuItem} from "@/models/sidebar_menu";
+import type {MenuItem} from "@/models/sidebar_menu";
 
 const journal_info_base = '/info'
 

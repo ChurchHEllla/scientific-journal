@@ -1,4 +1,4 @@
-import {ArticleItem} from "@/models/articles";
+import type {ArticleItem} from "@/models/articles";
 import {useState} from "react";
 import styles from "./JournalItem.module.css"
 import sharedStyles from "@/shared/styles/styles.module.css"

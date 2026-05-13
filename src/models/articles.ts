@@ -2,21 +2,20 @@
 /*
 Модель описания статей
 */
-export interface ArticleResponse {
-    articles: Article[];
-    status: string;
-}
-export interface Article{
+export interface Journal{
+    journalId: string
     data: string;
     articleTitle: string;
     articleGroups: ArticleGroup[];
 }
 export interface ArticleGroup{
+    articleGroupId?: string
     articleGroupTitle: string;
     articleItems: ArticleItem[];
 }
 
 export interface ArticleItem {
+    articleItemId?: string
     articleItemTitle: string;
     authors: Author[];
     abstract: string;
