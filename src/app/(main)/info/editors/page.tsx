@@ -1,4 +1,4 @@
-import { editors } from "@data/editors";
+import { editors } from "@data/editors"
 import styles from './page.module.css'
 export default function EditorPage() {
     return (
@@ -48,5 +48,5 @@ export default function EditorPage() {
             </table>
 
         </div>
-    );
+    )
 }

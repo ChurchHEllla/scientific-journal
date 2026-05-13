@@ -1,5 +1,5 @@
-import DocxViewer from "@components/DocxViewer";
-import type {SearchParams} from "next/dist/server/request/search-params";
+import DocxViewer from "@components/DocxViewer"
+import type {SearchParams} from "next/dist/server/request/search-params"
 
 export default async function ViewPage({searchParams}: {searchParams: SearchParams}) {
 
@@ -7,7 +7,7 @@ export default async function ViewPage({searchParams}: {searchParams: SearchPara
     if (!file) {
         return (
             <div>Файл не найден</div>
-        );
+        )
     }
     return (
         <div style={{ width: "100%", display: "flex", flexDirection: "column" }}>
@@ -15,5 +15,5 @@ export default async function ViewPage({searchParams}: {searchParams: SearchPara
                 <DocxViewer fileUrl={'/assets/'+ file} withWrapper={false}/>
             </div>
         </div>
-    );
+    )
 }

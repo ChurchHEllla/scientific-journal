@@ -1,15 +1,15 @@
-import type {ArticleItem} from "@/models/articles";
-import {useState} from "react";
+import type {ArticleItem} from "@/models/articles"
+import {useState} from "react"
 import styles from "./JournalItem.module.css"
 import sharedStyles from "@/shared/styles/styles.module.css"
 
 export default function JournalItem({a}: {a: ArticleItem}) {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false)
     return(
        <div>
             <a
                 onClick={(e) => {
-                    e.preventDefault();
+                    e.preventDefault()
                     setIsOpen(!isOpen)
                 }}
                 aria-expanded={isOpen}

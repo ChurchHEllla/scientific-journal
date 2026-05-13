@@ -1,11 +1,11 @@
 'use client'
 
-import DocxViewer from "@components/DocxViewer";
+import DocxViewer from "@components/DocxViewer"
 import styles from "./page.module.css"
 import sharedStyles from "@/shared/styles/styles.module.css"
-import {useState} from "react";
+import {useState} from "react"
 export default function ExamplePage() {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false)
 
     return (
         <div>
@@ -28,7 +28,7 @@ export default function ExamplePage() {
                 <a
                     className={sharedStyles.link}
                     onClick={(e) => {
-                        setIsOpen(!isOpen); e.preventDefault();
+                        setIsOpen(!isOpen); e.preventDefault()
                     }
                     }
                 >

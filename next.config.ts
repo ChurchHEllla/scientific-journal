@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from "next"
 
 module.exports = {
     allowedDevOrigins: ['192.168.1.3'],
@@ -6,6 +6,6 @@ module.exports = {
 
 const nextConfig: NextConfig = {
     output: "export",
-};
+}
 
-export default nextConfig;
+export default nextConfig

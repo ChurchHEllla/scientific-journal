@@ -1,4 +1,4 @@
-import PdfViewer from "@components/PdfViewer";
+import PdfViewer from "@components/PdfViewer"
 
 export default async function AboutPage() {
     return (

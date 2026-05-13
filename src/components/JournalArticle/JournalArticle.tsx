@@ -1,7 +1,7 @@
 'use client'
 
-import type {Journal, ArticleGroup, ArticleItem} from "@/models/articles";
-import JournalItem from "@components/JournalArticle/JournalItem";
+import type {Journal, ArticleGroup, ArticleItem} from "@/models/articles"
+import JournalItem from "@components/JournalArticle/JournalItem"
 export default function JournalArticle({a}: {a: Journal}) {
     return (
             <div>

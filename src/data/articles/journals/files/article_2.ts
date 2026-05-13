@@ -1,4 +1,4 @@
-import type { Journal } from "@/models/articles";
+import type { Journal } from "@/models/articles"
 
 export const mockArticle2: Journal = {
     journalId: "2-2023",
@@ -56,4 +56,4 @@ export const mockArticle2: Journal = {
             ],
         },
     ],
-};
+}

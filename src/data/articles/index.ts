@@ -1,6 +1,6 @@
-import {mockArticle1} from '@data/articles/journals/files/article_1';
-import {mockArticle2} from '@data/articles/journals/files/article_2';
-import type {Journal} from "@/models/articles";
+import {mockArticle1} from '@data/articles/journals/files/article_1'
+import {mockArticle2} from '@data/articles/journals/files/article_2'
+import type {Journal} from "@/models/articles"
 
 
 interface JournalList {

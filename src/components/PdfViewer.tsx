@@ -1,17 +1,17 @@
-'use client';
+'use client'
 
-import {SpecialZoomLevel, Viewer, ViewMode, Worker} from '@react-pdf-viewer/core';
-import {defaultLayoutPlugin} from '@react-pdf-viewer/default-layout';
+import {SpecialZoomLevel, Viewer, ViewMode, Worker} from '@react-pdf-viewer/core'
+import {defaultLayoutPlugin} from '@react-pdf-viewer/default-layout'
 
-import '@react-pdf-viewer/core/lib/styles/index.css';
-import '@react-pdf-viewer/default-layout/lib/styles/index.css';
+import '@react-pdf-viewer/core/lib/styles/index.css'
+import '@react-pdf-viewer/default-layout/lib/styles/index.css'
 
 interface Props {
     fileUrl: string
 }
 
 export default function PdfViewer({fileUrl}: Props) {
-    const defaultLayoutPluginInstance = defaultLayoutPlugin();
+    const defaultLayoutPluginInstance = defaultLayoutPlugin()
 
     return (
         <div style={{ height: '100vh', overflow: 'auto' }}>
@@ -25,5 +25,5 @@ export default function PdfViewer({fileUrl}: Props) {
             </Worker>
         </div>
 
-    );
+    )
 }

@@ -1,7 +1,7 @@
 /**
  * Рекурсивно ищет элемент меню по ID во всей древовидной структуре
  */
-import type {MenuItem} from "@/models/sidebar_menu";
+import type {MenuItem} from "@/models/sidebar_menu"
 
 
 export function findMenuItemById(
@@ -10,14 +10,14 @@ export function findMenuItemById(
 ): MenuItem | undefined {
     for (const item of items) {
         if (item.id === targetId) {
-            return item;
+            return item
         }
         if (item.children && item.children.length > 0) {
-            const found = findMenuItemById(item.children, targetId);
+            const found = findMenuItemById(item.children, targetId)
             if (found) {
-                return found;
+                return found
             }
         }
     }
-    return undefined;
+    return undefined
 }

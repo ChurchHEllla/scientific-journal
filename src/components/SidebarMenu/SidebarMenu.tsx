@@ -1,10 +1,10 @@
 // components/SidebarMenu/SidebarMenu.tsx
-'use client';
+'use client'
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation'; // Используем роутер Next.js для навигации без перезагрузки
-import styles from './SidebarMenu.module.css';
-import type {MenuItem} from "@/models/sidebar_menu";
+import { useState } from 'react'
+import { useRouter } from 'next/navigation' // Используем роутер Next.js для навигации без перезагрузки
+import styles from './SidebarMenu.module.css'
+import type {MenuItem} from "@/models/sidebar_menu"
 
 
 export default function SidebarMenu({ items }: {items: MenuItem[]}) {
@@ -16,19 +16,19 @@ export default function SidebarMenu({ items }: {items: MenuItem[]}) {
                 ))}
             </ul>
         </nav>
-    );
+    )
 };
 
 export function SidebarMenuItem({item, level = 0}: { item: MenuItem; level?: number; }) {
-    const router = useRouter(); // Хук для навигации
-    const [isOpen, setIsOpen] = useState(false);
-    const hasChildren = item.children && item.children.length > 0;
+    const router = useRouter() // Хук для навигации
+    const [isOpen, setIsOpen] = useState(false)
+    const hasChildren = item.children && item.children.length > 0
 
     const handleToggle = (e: React.MouseEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
-        setIsOpen(!isOpen);
-    };
+        e.preventDefault()
+        e.stopPropagation()
+        setIsOpen(!isOpen)
+    }
 
     /*const handleNavigate = () => {
         if (item.href) {
@@ -86,5 +86,5 @@ export function SidebarMenuItem({item, level = 0}: { item: MenuItem; level?: num
                 </button>
             )}
         </li>
-    );
+    )
 }
