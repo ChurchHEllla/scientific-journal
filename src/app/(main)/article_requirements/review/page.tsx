@@ -5,7 +5,7 @@ import styles from "./page.module.css"
 import sharedStyles from "@/shared/styles/styles.module.css"
 import {useState} from "react";
 export default function ReviewPage() {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
     return (
         <div>
             <div className={styles.container}>
@@ -17,7 +17,7 @@ export default function ReviewPage() {
                     href={'/view?file=rate.docx'}
                     target={'_blank'}
                 >
-                    Перейти посмотреть
+                    Перейти посмотреть в новой вкладке
                 </a>
                 <a
                     className={sharedStyles.link}

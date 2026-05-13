@@ -5,7 +5,7 @@ import styles from "./page.module.css"
 import sharedStyles from "@/shared/styles/styles.module.css"
 import {useState} from "react";
 export default function AuthorPage() {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
     return (
         <div>
             <div className={styles.container}>
@@ -16,7 +16,7 @@ export default function AuthorPage() {
                     href={'/view?file=author.docx'}
                     target={'_blank'}
                 >
-                    Перейти посмотреть
+                    Перейти посмотреть в новой вкладке
                 </a>
 
                 <a

@@ -5,7 +5,7 @@ import styles from "./page.module.css"
 import sharedStyles from "@/shared/styles/styles.module.css"
 import {useState} from "react";
 export default function ExamplePage() {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <div>
@@ -23,7 +23,7 @@ export default function ExamplePage() {
                     href={'/view?file=example.docx'}
                     target={'_blank'}
                 >
-                    Перейти посмотреть
+                    Перейти посмотреть в новой вкладке
                 </a>
                 <a
                     className={sharedStyles.link}
