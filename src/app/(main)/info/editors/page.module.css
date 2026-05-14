@@ -1,12 +1,12 @@
 .tableBordered {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .tableBordered td,
 .tableBordered th {
-    border: 1px solid #ddd;
-    padding: 10px;
-    width: 20%;
-    text-align: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 20%;
+  text-align: center;
 }

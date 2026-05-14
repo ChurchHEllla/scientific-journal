@@ -1,11 +1,7 @@
 'use client'
 
-import React from "react"
+import React from 'react'
 
 export default function ScientificArticlesAdmin() {
-      return (
-          <div>
-
-          </div>
-      )
+  return <div></div>
 }
