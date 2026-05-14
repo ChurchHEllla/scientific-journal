@@ -16,7 +16,7 @@ export default function AuthorPage() {
                     href={'/view?file=author.docx'}
                     target={'_blank'}
                 >
-                    Перейти посмотреть в новой вкладке
+                    Перейти посмотреть в новой вкладке (норм вариант)
                 </a>
 
                 <a

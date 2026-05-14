@@ -23,7 +23,7 @@ export default function ExamplePage() {
                     href={'/view?file=example.docx'}
                     target={'_blank'}
                 >
-                    Перейти посмотреть в новой вкладке
+                    Перейти посмотреть в новой вкладке (норм вариант)
                 </a>
                 <a
                     className={sharedStyles.link}

@@ -17,7 +17,7 @@ export default function ReviewPage() {
                     href={'/view?file=rate.docx'}
                     target={'_blank'}
                 >
-                    Перейти посмотреть в новой вкладке
+                    Перейти посмотреть в новой вкладке (норм вариант)
                 </a>
                 <a
                     className={sharedStyles.link}
