@@ -7,43 +7,43 @@ import SidebarMenu from '@components/SidebarMenu/SidebarMenu'
 import { index } from '@data/sidebar'
 
 const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
+    variable: '--font-geist-sans',
+    subsets: ['latin'],
 })
 
 const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+    variable: '--font-geist-mono',
+    subsets: ['latin'],
 })
 
 export const metadata: Metadata = {
-  title: 'НТБ МАДИ',
-  description: 'Каталог || Наука и техника в дорожной отрасли',
+    title: 'НТБ МАДИ',
+    description: 'Каталог || Наука и техника в дорожной отрасли',
 }
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode
+    children: React.ReactNode
 }>) {
-  return (
-    <html lang='en' className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>
-        <div className={styles.page}>
-          {/* Шапка с логотипом */}
-          <Header></Header>
-          {/* Основная часть: Сайдбар + Контент */}
-          <div className={styles.container}>
-            <aside className={styles.sidebarWrapper}>
-              <SidebarMenu items={index} />
-            </aside>
+    return (
+        <html lang='en' className={`${geistSans.variable} ${geistMono.variable}`}>
+            <body>
+                <div className={styles.page}>
+                    {/* Шапка с логотипом */}
+                    <Header></Header>
+                    {/* Основная часть: Сайдбар + Контент */}
+                    <div className={styles.container}>
+                        <aside className={styles.sidebarWrapper}>
+                            <SidebarMenu items={index} />
+                        </aside>
 
-            <main className={styles.mainContent}>
-              <div className={styles.intro}>{children}</div>
-            </main>
-          </div>
-        </div>
-      </body>
-    </html>
-  )
+                        <main className={styles.mainContent}>
+                            <div className={styles.intro}>{children}</div>
+                        </main>
+                    </div>
+                </div>
+            </body>
+        </html>
+    )
 }

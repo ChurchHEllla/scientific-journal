@@ -1,32 +1,32 @@
 {
-  "name": "scientific-journal",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "@react-pdf-viewer/core": "^3.12.0",
-    "@react-pdf-viewer/default-layout": "^3.12.0",
-    "canvas": "^3.2.3",
-    "docx-preview": "^0.3.7",
-    "next": "16.2.4",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
-  },
-  "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "autoprefixer": "^10.5.0",
-    "eslint": "^9",
-    "eslint-config-next": "16.2.4",
-    "postcss": "^8.5.14",
-    "prettier": "^3.8.3",
-    "tailwindcss": "^4.3.0",
-    "typescript": "^5"
-  }
+    "name": "scientific-journal",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "eslint"
+    },
+    "dependencies": {
+        "@react-pdf-viewer/core": "^3.12.0",
+        "@react-pdf-viewer/default-layout": "^3.12.0",
+        "canvas": "^3.2.3",
+        "docx-preview": "^0.3.7",
+        "next": "16.2.4",
+        "react": "19.2.4",
+        "react-dom": "19.2.4"
+    },
+    "devDependencies": {
+        "@types/node": "^20",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "autoprefixer": "^10.5.0",
+        "eslint": "^9",
+        "eslint-config-next": "16.2.4",
+        "postcss": "^8.5.14",
+        "prettier": "^3.8.3",
+        "tailwindcss": "^4.3.0",
+        "typescript": "^5"
+    }
 }

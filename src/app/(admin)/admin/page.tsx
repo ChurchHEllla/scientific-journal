@@ -3,5 +3,5 @@
 import React from 'react'
 
 export default function ScientificArticlesAdmin() {
-  return <div></div>
+    return <div></div>
 }

@@ -3,12 +3,12 @@ import { mockArticle2 } from '@data/articles/journals/files/article_2'
 import type { Journal } from '@/models/articles'
 
 interface JournalList {
-  [key: string]: Journal
+    [key: string]: Journal
 }
 const article1: Journal = mockArticle1
 const article2: Journal = mockArticle2
 
 export const journals: JournalList = {
-  [article1.journalId]: article1,
-  [article2.journalId]: article2,
+    [article1.journalId]: article1,
+    [article2.journalId]: article2,
 }
