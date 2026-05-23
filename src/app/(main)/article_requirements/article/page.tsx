@@ -1,6 +1,15 @@
-import PdfViewer from '@components/PdfViewer'
+'use client'
 
-export default async function AboutPage() {
+import dynamic from "next/dynamic"
+
+const PdfViewer = dynamic(
+    () => import('@/components/PdfViewer'),
+    {
+        loading: () => <p>Загрузка PDF...</p>,
+    }
+)
+
+export default function AboutPage() {
     return (
         <div>
             <PdfViewer fileUrl='/assets/article.pdf' />

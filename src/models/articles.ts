@@ -2,7 +2,8 @@
 Модель описания статей
 */
 export interface Journal {
-    journalId: string
+    journalId?: string
+    labelKey: string
     data: string
     articleTitle: string
     articleGroups: ArticleGroup[]
@@ -23,6 +24,7 @@ export interface ArticleItem {
 }
 
 export interface Author {
+    id?: string
     fullName: string
     bio: string
     email?: string

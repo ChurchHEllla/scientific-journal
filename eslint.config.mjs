@@ -17,6 +17,7 @@ export default defineConfig([
         rules: {
             '@typescript-eslint/semi': 'off',
             semi: ['error', 'never'],
+            '@next/next/no-img-element': 'off',
 
             'no-console': ['warn', { allow: ['warn', 'error'] }],
             'no-debugger': 'error',

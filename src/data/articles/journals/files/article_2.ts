@@ -1,7 +1,7 @@
 import type { Journal } from '@/models/articles'
 
 export const mockArticle2: Journal = {
-    journalId: '2-2023',
+    labelKey: '1-2023',
     data: '«Вестник Московского автомобильно-дорожного государственного технического университета (МАДИ)» | Выпуск 2 (73), июнь 2023',
     articleTitle: 'vol_73_2',
     articleGroups: [

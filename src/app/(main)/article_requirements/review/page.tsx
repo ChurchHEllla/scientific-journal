@@ -1,9 +1,17 @@
 'use client'
 
-import DocxViewer from '@components/DocxViewer'
 import styles from './page.module.css'
 import sharedStyles from '@/shared/styles/styles.module.css'
 import { useState } from 'react'
+import dynamic from "next/dynamic"
+
+const DocxViewer = dynamic(
+    () => import('@/components/DocxViewer'),
+    {
+        loading: () => <p>Загрузка DOCX viewer...</p>,
+    }
+)
+
 export default function ReviewPage() {
     const [isOpen, setIsOpen] = useState(false)
     return (

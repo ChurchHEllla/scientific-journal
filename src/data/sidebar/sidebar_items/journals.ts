@@ -20,7 +20,7 @@ export const journals: MenuItem = {
                 },
                 {
                     id: '1-2023',
-                    label: '1-2022',
+                    label: '1-2023',
                     href: `${journals_base}/1-2023`,
                 },
             ],
