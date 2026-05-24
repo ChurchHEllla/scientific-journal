@@ -1,0 +1,26 @@
+info:
+  name: create journal
+  type: http
+  seq: 4
+
+http:
+  method: post
+  url: http://localhost:8080/api/journal
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "label_key": "tech",
+        "data": "Some journal data",
+        "article_title": "Tech Journal"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: false
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

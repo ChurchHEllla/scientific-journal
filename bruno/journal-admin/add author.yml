@@ -1,0 +1,25 @@
+info:
+    name: add author
+    type: http
+    seq: 4
+
+http:
+    method: post
+    url: http://localhost:8080/api/addAuthor
+    headers:
+        - name: Content-Type
+          value: application/json
+    body:
+        type: json
+        data: |-
+            {
+              "article_item_id": "33333333-3333-3333-3333-333333333333",
+              "author_id": "11111111-1111-1111-1111-111111111111"
+            }
+    auth: inherit
+
+settings:
+    encodeUrl: false
+    timeout: 0
+    followRedirects: true
+    maxRedirects: 5

@@ -1,24 +1,18 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import TreeView from '@components/admin/TreeView/TreeView'
+import { ArticleView } from '@components/admin/TreeView/TreeView'
 
-type Journal = {
+interface Journal {
     journal_id: string
     article_title: string
 }
 
-type Group = {
+interface Group {
     article_group_id: string
     journal_id: string
     article_group_title: string
-}
-
-type Article = {
-    article_item_id: string
-    article_group_id: string
-    article_item_title: string
-    abstract: string
-    keywords: string
 }
 
 type Author = {
@@ -27,15 +21,20 @@ type Author = {
     email: string
 }
 
-type FullArticle = Article & {
-    content: string
+export interface ArticleItem {
+    article_item_id: string
+    article_group_id: string
+    article_item_title: string
+    abstract: string
+    keywords: string
+    content?: string
     authors: Author[]
 }
 
-type InitResponse = {
+export interface InitResponse {
     journals: Journal[]
     groups: Group[]
-    articles: FullArticle[]
+    articles: ArticleItem[]
     authors: Author[]
 }
 
@@ -142,7 +141,7 @@ export default function AdminPage() {
 
     const [search, setSearch] = useState('')
 
-    const [selectedArticle, setSelectedArticle] = useState<FullArticle | null>(null)
+    const [selectedArticle, setSelectedArticle] = useState<ArticleItem | null>(null)
 
     const [showCreate, setShowCreate] = useState(false)
 
@@ -160,7 +159,7 @@ export default function AdminPage() {
         <div style={styles.layout}>
             <aside style={styles.sidebar}>
                 <button style={styles.createButton} onClick={() => setShowCreate(true)}>
-                    + New Article
+                    + New ArticleItem
                 </button>
 
                 <input
@@ -202,83 +201,7 @@ export default function AdminPage() {
     )
 }
 
-function TreeView({ data, onSelect }: { data: InitResponse; onSelect: (a: FullArticle) => void }) {
-    return (
-        <div>
-            {data.journals.map((journal) => {
-                const groups = data.groups.filter((g) => g.journal_id === journal.journal_id)
 
-                return (
-                    <div key={journal.journal_id} style={{ marginBottom: 20 }}>
-                        <h3>{journal.article_title}</h3>
-
-                        <div style={{ paddingLeft: 15 }}>
-                            {groups.map((group) => {
-                                const articles = data.articles.filter(
-                                    (a) => a.article_group_id === group.article_group_id
-                                )
-
-                                return (
-                                    <div key={group.article_group_id} style={{ marginBottom: 10 }}>
-                                        <b>{group.article_group_title}</b>
-
-                                        <div style={{ paddingLeft: 15 }}>
-                                            {articles.map((article) => (
-                                                <div
-                                                    key={article.article_item_id}
-                                                    style={styles.link}
-                                                    onClick={() => onSelect(article)}
-                                                >
-                                                    {article.article_item_title}
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    </div>
-                )
-            })}
-        </div>
-    )
-}
-
-function ArticleView({ article }: { article: FullArticle }) {
-    return (
-        <div>
-            <h1>{article.article_item_title}</h1>
-
-            <p>
-                <b>Abstract:</b>
-            </p>
-
-            <p>{article.abstract}</p>
-
-            <p>
-                <b>Keywords:</b>
-            </p>
-
-            <p>{article.keywords}</p>
-
-            <p>
-                <b>Authors:</b>
-            </p>
-
-            <ul>
-                {article.authors.map((a) => (
-                    <li key={a.author_id}>{a.full_name}</li>
-                ))}
-            </ul>
-
-            <p>
-                <b>Content:</b>
-            </p>
-
-            <pre style={styles.pre}>{article.content}</pre>
-        </div>
-    )
-}
 
 function CreateModal({ data, onClose }: { data: InitResponse; onClose: () => void }) {
     const [title, setTitle] = useState('')
@@ -303,7 +226,7 @@ function CreateModal({ data, onClose }: { data: InitResponse; onClose: () => voi
         <div style={styles.modalOverlay}>
             <div style={styles.modal}>
                 <div style={styles.modalHeader}>
-                    <h2>Create Article</h2>
+                    <h2>Create ArticleItem</h2>
 
                     <button onClick={onClose}>X</button>
                 </div>
@@ -420,6 +343,7 @@ const styles: any = {
     createButton: {
         width: '100%',
         padding: 10,
+        marginTop: 20,
         marginBottom: 10,
         cursor: 'pointer',
     },

@@ -1,0 +1,27 @@
+info:
+  name: create article
+  type: http
+  seq: 1
+
+http:
+  method: post
+  url: http://localhost:8080/api/articles
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "article_group_id": "22222222-2222-2222-2222-222222222222",
+        "article_item_title": "Rostics лучше чем KFC",
+        "abstract": "По факту <br/> На прошлое",
+        "keywords": "Бургер, кукумбер, курочка"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: false
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

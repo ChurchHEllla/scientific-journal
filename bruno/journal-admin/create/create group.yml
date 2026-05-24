@@ -1,0 +1,26 @@
+info:
+  name: create group
+  type: http
+  seq: 3
+
+http:
+  method: post
+  url: http://localhost:8080/api/groups
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "article_group_id": "22222222-2222-2222-2222-222222222222",
+        "journal_id": "6b2c1c3e-7a3d-4a2f-9d6a-2f5a9f2c1111",
+        "article_group_title": "Distributed Systems"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: false
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
