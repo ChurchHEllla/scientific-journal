@@ -1,0 +1,73 @@
+/* app/page.module.css */
+
+.page {
+    /* Светлая тема по умолчанию */
+    --background: #ffffff; /* Белый фон всей страницы */
+    --foreground: #171717; /* Почти черный текст для контраста */
+
+    --sidebar-bg: #f9fafb; /* Очень светло-серый фон для сайдбара */
+    --sidebar-border: #e5e7eb; /* Тонкая рамка разделителя */
+
+    --text-primary: #111827; /* Основной текст заголовков */
+    --text-secondary: #111827; /* Второстепенный текст (описания) */
+
+    --accent-color: #2563eb; /* Акцентный синий цвет (для ссылок/кнопок) */
+    --accent-hover: #1d4ed8; /* Темнее при наведении */
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Минимальная высота во весь экран */
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
+.mainContent {
+    flex: 1; /* Занимает остальное пространство */
+    padding: 40px;
+    overflow-y: auto; /* Скролл основного контента */
+    background-color: var(--background);
+}
+
+/* Стили для типографики внутри mainContent (если будете добавлять текст) */
+.intro h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.intro p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 60ch; /* Оптимальная длина строки для чтения */
+}
+
+.container {
+    display: flex;
+    flex: 1; /* Занимает все оставшееся место */
+    overflow: hidden; /* Чтобы скроллился только контент, если нужно */
+}
+
+.sidebarWrapper {
+    width: 270px; /* Фиксированная ширина сайдбара */
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--sidebar-border);
+    overflow-y: auto; /* Скролл внутри сайдбара, если меню длинное */
+    padding: 20px 0;
+    flex-shrink: 0; /* Не сжимать сайдбар */
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebarWrapper {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--sidebar-border);
+    }
+}

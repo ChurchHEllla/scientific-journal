@@ -1,0 +1,28 @@
+info:
+  name: update article
+  type: http
+  seq: 1
+
+http:
+  method: put
+  url: http://localhost:8080/api/article
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "article_item_id" : "33333333-2222-2222-2222-333333333333",
+        "article_group_id": "22222222-2222-2222-2222-222222222222",
+        "article_item_title": "Бургер КИИИИИИНГSSSSS",
+        "abstract": "Бургер КИИИИИИНГ",
+        "keywords": "е"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: false
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,27 @@
+info:
+  name: create author
+  type: http
+  seq: 2
+
+http:
+  method: post
+  url: http://localhost:8080/api/authors
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "author_id": "11111111-1111-1111-1111-111111111111",
+        "full_name": "John Doe",
+        "bio": "Backend engineer and researcher",
+        "email": "john@example.com"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: false
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
