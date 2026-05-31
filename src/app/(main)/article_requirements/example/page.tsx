@@ -3,14 +3,11 @@
 import styles from './page.module.css'
 import sharedStyles from '@/shared/styles/styles.module.css'
 import { useState } from 'react'
-import dynamic from "next/dynamic"
+import dynamic from 'next/dynamic'
 
-const DocxViewer = dynamic(
-    () => import('@/components/DocxViewer'),
-    {
-        loading: () => <p>Загрузка DOCX viewer...</p>,
-    }
-)
+const DocxViewer = dynamic(() => import('@/components/DocxViewer'), {
+    loading: () => <p>Загрузка DOCX viewer...</p>,
+})
 
 export default function ExamplePage() {
     const [isOpen, setIsOpen] = useState(false)

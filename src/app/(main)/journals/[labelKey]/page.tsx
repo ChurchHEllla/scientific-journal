@@ -13,7 +13,7 @@ interface Props {
 export default async function JournalPage({ params }: Props) {
     const { labelKey } = await params
 
-    const article: Journal = journals[labelKey]
+    const article = journals.get(labelKey)
 
     // 1. Ищем данные журнала в вашем массиве по ID
     const journal = findMenuItemById(index, labelKey)
@@ -24,7 +24,7 @@ export default async function JournalPage({ params }: Props) {
     return (
         <div>
             <p>Это страница журнала с ID: {labelKey}</p>
-            <JournalArticle a={article} />
+            <JournalArticle a={article.children[0]} />
         </div>
     )
 }

@@ -20,7 +20,7 @@ export default function JournalItem({ a }: { a: ArticleItem }) {
             <p style={{ textAlign: 'justify', marginBottom: '10px' }}>
                 <b>Авторы:</b>
             </p>
-            {a.authors.map((author) => (
+            {a.authors!.map((author) => (
                 <p style={{ textAlign: 'justify' }} key={author.fullName}>
                     <b>{author.fullName}, </b>
                     {author.bio},{' '}
@@ -42,7 +42,7 @@ export default function JournalItem({ a }: { a: ArticleItem }) {
                     <br />
                 </div>
                 <ol>
-                    {a.references.map((ref, index) => (
+                    {a.references!.map((ref, index) => (
                         <li key={index}>
                             {index + 1}. {ref}
                         </li>

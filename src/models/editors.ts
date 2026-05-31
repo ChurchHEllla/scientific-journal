@@ -5,7 +5,7 @@ export interface Editor {
     affiliation?: string
 }
 
-export interface EditorialTeam {
+export interface EditorsTeam {
     chiefEditors: Editor[]
     editorialCouncil: Editor[]
 }

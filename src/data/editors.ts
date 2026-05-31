@@ -1,6 +1,6 @@
-import type { EditorialTeam } from '@/models/editors'
+import type { EditorsTeam } from '@/models/editors'
 
-export const editors: EditorialTeam = {
+export const editors: EditorsTeam = {
     chiefEditors: [
         {
             name: 'В.В. Сильянов',

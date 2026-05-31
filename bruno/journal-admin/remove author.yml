@@ -1,19 +1,27 @@
 info:
-  name: remove author
-  type: http
-  seq: 5
+    name: remove author
+    type: http
+    seq: 5
 
 http:
-  method: delete
-  url: http://localhost:8080/api/removeAuthor/550e8400-e29b-41d4-a716-446655440001?articleId=550e8400-e29b-41d4-a716-446655440004
-  params:
-    - name: articleId
-      value: 550e8400-e29b-41d4-a716-446655440004
-      type: query
-  auth: inherit
+    method: delete
+    url: http://localhost:8080/api/author/move
+    params:
+        - name: articleId
+          value: 550e8400-e29b-41d4-a716-446655440004
+          type: query
+          disabled: true
+    body:
+        type: json
+        data: |-
+            {
+              "article_item_id": "db6da3fb-db7a-41d4-b472-ab769eefb175",
+              "author_id": "252511ad-443b-4901-93bd-81e9cc05d4db"
+            }
+    auth: inherit
 
 settings:
-  encodeUrl: false
-  timeout: 0
-  followRedirects: true
-  maxRedirects: 5
+    encodeUrl: false
+    timeout: 0
+    followRedirects: true
+    maxRedirects: 5

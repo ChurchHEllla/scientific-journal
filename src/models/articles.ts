@@ -6,21 +6,21 @@ export interface Journal {
     labelKey: string
     data: string
     articleTitle: string
-    articleGroups: ArticleGroup[]
 }
 export interface ArticleGroup {
+    journalId?: string
     articleGroupId?: string
     articleGroupTitle: string
-    articleItems: ArticleItem[]
 }
 
 export interface ArticleItem {
+    articleGroupId?: string
     articleItemId?: string
     articleItemTitle: string
-    authors: Author[]
     abstract: string
     keywords?: string[]
-    references: string[]
+    references?: string[]
+    authors?: Author[]
 }
 
 export interface Author {
@@ -28,4 +28,24 @@ export interface Author {
     fullName: string
     bio: string
     email?: string
+}
+
+export interface InitArticleNode {
+    article: ArticleItem;
+}
+
+export interface InitGroupNode {
+    group: ArticleGroup;
+    children: InitArticleNode[];
+}
+
+export interface InitJournalNode {
+    journal: Journal;
+    children: InitGroupNode[];
+}
+
+// --- Корневой ответ ---
+
+export interface InitResponse {
+    children: InitJournalNode[];
 }

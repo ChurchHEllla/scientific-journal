@@ -8,13 +8,15 @@ import type { MenuItem } from '@/models/sidebar_menu'
 
 export default function SidebarMenu({ items }: { items: MenuItem[] }) {
     return (
-        <nav className={styles.sidebar}>
-            <ul className={styles.menuList}>
-                {items.map((item) => (
-                    <SidebarMenuItem key={item.label} item={item} />
-                ))}
-            </ul>
-        </nav>
+        <div>
+            <nav className={styles.sidebar}>
+                <ul className={styles.menuList}>
+                    {items.map((item) => (
+                        <SidebarMenuItem key={item.label} item={item} />
+                    ))}
+                </ul>
+            </nav>
+        </div>
     )
 }
 
