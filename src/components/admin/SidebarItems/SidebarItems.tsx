@@ -5,30 +5,24 @@ import SidebarMenu from '@components/site/SidebarMenu/SidebarMenu'
 import { TreeBuilder } from '@components/admin/SidebarItems/SidebarMenuAdmin/mapper'
 import { useMemo, useState } from 'react'
 import type { ArticleFullItemResponse } from '@/models/articles'
-import { getArticleById } from '@/api/client'
-import { Init } from '@/models/articles'
 import { useInit } from '@/app/(admin)/admin/provider'
-import { mockInitData } from '@data/articles/journals/mock/admin_mock'
+import { Init } from '@/models/articles'
+import { useRouter } from 'next/navigation'
 
 export default function SidebarItems() {
+    const router = useRouter()
     const { init } = useInit()
     const [search, setSearch] = useState('')
-
-    const [selectedArticle, setSelectedArticle] = useState<ArticleFullItemResponse | null>(null)
-
-    const loadArticle = async () => {
-        const article = await getArticleById('db6da3fb-db7a-41d4-b472-ab769eefb175')
-        setSelectedArticle(article)
-    }
+    const initData: Init = init
 
     const filteredArticles = useMemo(() => {
         const q = search.toLowerCase()
-        return init?.articles.filter(
+        return initData?.articles.filter(
             (a: ArticleFullItemResponse) =>
                 a.articleItemTitle.toLowerCase().includes(q) ||
                 a.articleItemId!.toLowerCase().includes(q)
         )
-    }, [search, init])
+    }, [search, initData])
 
     return (
         <div className={styles.sidebar}>
@@ -46,7 +40,15 @@ export default function SidebarItems() {
                             <div
                                 key={article.articleItemId}
                                 className={styles.articleItem}
-                                onClick={() => loadArticle()}
+                                onClick={() => {
+                                    router.push(
+                                        `/admin/${
+                                            initData.articles.find(
+                                                (a) => a.articleItemId === article.articleItemId
+                                            )?.articleItemId
+                                        }`
+                                    )
+                                }}
                             >
                                 <div>{article.articleItemTitle}</div>
 
@@ -54,7 +56,7 @@ export default function SidebarItems() {
                             </div>
                         ))
                     ) : (
-                        <SidebarMenu items={TreeBuilder(init)} />
+                        <SidebarMenu items={TreeBuilder(initData)} />
                     )}
                 </div>
             </aside>
