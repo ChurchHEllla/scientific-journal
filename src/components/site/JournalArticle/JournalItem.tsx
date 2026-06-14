@@ -1,9 +1,10 @@
-import type { ArticleItem } from '@/models/articles'
+'use client'
+import type { ArticleFullItemResponse } from '@/models/articles'
 import { useState } from 'react'
 import styles from './JournalItem.module.css'
 import sharedStyles from '@/shared/styles/styles.module.css'
 
-export default function JournalItem({ a }: { a: ArticleItem }) {
+export default function JournalItem({ a }: { a: ArticleFullItemResponse }) {
     const [isOpen, setIsOpen] = useState(false)
     return (
         <div>
@@ -20,7 +21,7 @@ export default function JournalItem({ a }: { a: ArticleItem }) {
             <p style={{ textAlign: 'justify', marginBottom: '10px' }}>
                 <b>Авторы:</b>
             </p>
-            {a.authors!.map((author) => (
+            {a.authors?.map((author) => (
                 <p style={{ textAlign: 'justify' }} key={author.fullName}>
                     <b>{author.fullName}, </b>
                     {author.bio},{' '}
@@ -29,7 +30,6 @@ export default function JournalItem({ a }: { a: ArticleItem }) {
                     </a>
                 </p>
             ))}
-
             <div className={`${styles.content} ${isOpen ? styles.open : ''}`}>
                 <div style={{ textAlign: 'justify' }}>
                     <b>Аннотация:</b>
@@ -42,9 +42,9 @@ export default function JournalItem({ a }: { a: ArticleItem }) {
                     <br />
                 </div>
                 <ol>
-                    {a.references!.map((ref, index) => (
+                    {a.references?.map((item, index) => (
                         <li key={index}>
-                            {index + 1}. {ref}
+                            {index + 1}. {item}
                         </li>
                     ))}
                 </ol>

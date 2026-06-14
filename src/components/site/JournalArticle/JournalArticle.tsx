@@ -5,7 +5,7 @@ import JournalItem from '@components/site/JournalArticle/JournalItem'
 export default function JournalArticle({ a }: { a: InitJournalNode }) {
     return (
         <div>
-            <h1 style={{ textAlign: 'center' }}>{a.journal.articleTitle}</h1>
+            <h1 style={{ textAlign: 'center' }}>{a.journal.title}</h1>
             <div>
                 <h4 style={{ textAlign: 'justify' }}>Содержание</h4>
                 <hr />

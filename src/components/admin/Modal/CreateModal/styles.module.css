@@ -1,0 +1,222 @@
+.layout {
+    display: flex;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background: #f5f6f8;
+}
+
+.sidebar {
+    width: 320px;
+    border-right: 1px solid #ddd;
+    padding: 15px;
+    overflow: auto;
+    background: white;
+}
+
+.content {
+    flex: 1;
+    padding: 25px;
+    overflow: auto;
+}
+
+/* buttons */
+
+.createButton {
+    width: 100%;
+    padding: 10px 14px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #2563eb;
+    color: white;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.createButton:hover {
+    background: #1d4ed8;
+}
+
+/* inputs */
+
+.input {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+
+    box-sizing: border-box;
+    outline: none;
+}
+
+.input:focus {
+    border-color: #2563eb;
+}
+
+.textarea {
+    width: 100%;
+    min-height: 120px;
+
+    padding: 10px 12px;
+    margin-bottom: 10px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+/* articles */
+
+.articleItem {
+    padding: 12px;
+    margin-bottom: 10px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+
+    background: white;
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.articleItem:hover {
+    background: #f3f4f6;
+}
+
+/* authors */
+
+.authorsBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.authorCard {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    padding: 12px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+
+    background: white;
+}
+
+.authorInputs {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+/* links */
+
+.link {
+    cursor: pointer;
+    color: #2563eb;
+    margin-top: 5px;
+}
+
+/* preview */
+
+.pre {
+    white-space: pre-wrap;
+
+    background: white;
+    padding: 15px;
+
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+/* modal */
+
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+.modal {
+    width: 700px;
+    max-height: 90vh;
+
+    overflow: auto;
+
+    background: white;
+
+    padding: 25px;
+    border-radius: 14px;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+/* checkbox */
+
+.checkbox {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    margin-top: 8px;
+}
+
+/* lists */
+
+.list {
+    background: white;
+
+    padding: 15px;
+    border-radius: 10px;
+
+    border: 1px solid #e5e7eb;
+}
+
+.deleteButton {
+    border: none;
+
+    background: #ef4444;
+    color: white;
+
+    padding: 7px 12px;
+
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.secondaryButton {
+    border: 1px solid #d1d5db;
+
+    background: white;
+
+    padding: 9px 14px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}

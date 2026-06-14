@@ -5,7 +5,7 @@ info:
 
 http:
     method: get
-    url: http://localhost:8080/api/articles/161db99e-7915-4b9c-aea9-64609c41448e
+    url: http://localhost:8080/api/articles/db6da3fb-db7a-41d4-b472-ab769eefb175
     auth: inherit
 
 settings:

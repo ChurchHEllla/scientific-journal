@@ -1,6 +1,5 @@
 import { index } from '@data/sidebar'
 import { findMenuItemById } from '@/utils/find_menu_item'
-import type { Journal } from '@/models/articles'
 import JournalArticle from '@components/site/JournalArticle/JournalArticle'
 import { journals } from '@data/articles'
 

@@ -5,7 +5,7 @@ export interface Journal {
     journalId?: string
     labelKey: string
     data: string
-    articleTitle: string
+    title: string
 }
 export interface ArticleGroup {
     journalId?: string
@@ -13,14 +13,15 @@ export interface ArticleGroup {
     articleGroupTitle: string
 }
 
-export interface ArticleItem {
+export interface ArticleFullItemResponse {
     articleGroupId?: string
     articleItemId?: string
     articleItemTitle: string
     abstract: string
-    keywords?: string[]
+    keywords?: string
     references?: string[]
     authors?: Author[]
+    createdAt?: string
 }
 
 export interface Author {
@@ -30,22 +31,26 @@ export interface Author {
     email?: string
 }
 
+export interface Init {
+    journals: Journal[]
+    groups: ArticleGroup[]
+    articles: ArticleFullItemResponse[]
+}
+
 export interface InitArticleNode {
-    article: ArticleItem;
+    article: ArticleFullItemResponse
 }
 
 export interface InitGroupNode {
-    group: ArticleGroup;
-    children: InitArticleNode[];
+    group: ArticleGroup
+    children: InitArticleNode[]
 }
 
 export interface InitJournalNode {
-    journal: Journal;
-    children: InitGroupNode[];
+    journal: Journal
+    children: InitGroupNode[]
 }
 
-// --- Корневой ответ ---
-
 export interface InitResponse {
-    children: InitJournalNode[];
+    children: InitJournalNode[]
 }

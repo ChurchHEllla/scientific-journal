@@ -1,0 +1,108 @@
+.layout {
+    display: flex;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    width: 320px;
+    border-right: 1px solid #ccc;
+    padding: 15px;
+    overflow: auto;
+}
+.sidebarWrapper {
+    width: 270px; /* Фиксированная ширина сайдбара */
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--sidebar-border);
+    overflow-y: auto; /* Скролл внутри сайдбара, если меню длинное */
+    padding: 20px 0;
+    flex-shrink: 0; /* Не сжимать сайдбар */
+}
+.content {
+    flex: 1;
+    padding: 20px;
+    overflow: auto;
+}
+
+.createButton {
+    min-width: 120px;
+    padding: 10px 18px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+
+    background-color: #2563eb;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+    transition: all 0.2s ease;
+}
+
+.input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.textarea {
+    width: 100%;
+    min-height: 100px;
+    margin-bottom: 10px;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.articleItem {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.link {
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.pre {
+    white-space: pre-wrap;
+    background: #eee;
+    padding: 10px;
+}
+
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    width: 700px;
+    max-height: 90vh;
+    overflow: auto;
+
+    background: white;
+    padding: 20px;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.checkbox {
+    display: block;
+    margin-top: 5px;
+}

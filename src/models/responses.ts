@@ -1,31 +1,32 @@
-export interface Journal {
-    journal_id: string // uuid.UUID -> string
-    label_key: string
+export interface JournalResponse {
+    journalId: string
+    labelKey: string
     data: string
-    article_title: string
-    created_at: string // time.Time -> ISO string
+    title: string
+    createdAt?: string
 }
 
-export interface ArticleGroup {
-    article_group_id: string // uuid.UUID -> string
-    journal_id: string // uuid.UUID -> string
-    article_group_title: string
-    created_at: string // time.Time -> ISO string
+export interface ArticleGroupResponse {
+    articleGroupId: string
+    journalId: string
+    articleGroupTitle: string
+    createdAt?: string
 }
 
-export interface ArticleItem {
-    article_item_id: string // uuid.UUID -> string
-    article_group_id: string // uuid.UUID -> string
-    article_item_title: string
+export interface ArticleItemResponse {
+    articleItemId: string
+    articleGroupId: string
+    articleItemTitle: string
+    references: string[]
     abstract: string
     keywords: string
-    created_at: string // time.Time -> ISO string
+    createdAt?: string
 }
 
-export interface Author {
-    author_id: string // uuid.UUID -> string
-    full_name: string
+export interface AuthorResponse {
+    authorId: string
+    fullName: string
     bio: string
-    email: string | null // *string -> string | null
-    created_at: string // time.Time -> ISO string
+    email: string | null
+    createdAt?: string
 }

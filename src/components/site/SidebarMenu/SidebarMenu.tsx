@@ -12,7 +12,7 @@ export default function SidebarMenu({ items }: { items: MenuItem[] }) {
             <nav className={styles.sidebar}>
                 <ul className={styles.menuList}>
                     {items.map((item) => (
-                        <SidebarMenuItem key={item.label} item={item} />
+                        <SidebarMenuItem key={item.id} item={item} />
                     ))}
                 </ul>
             </nav>
