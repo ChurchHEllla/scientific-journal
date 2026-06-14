@@ -1,7 +1,7 @@
 import { ArticleFullItemResponse, Author } from '@/models/articles'
-
+const BASE_URL = process.env.BASE_URL
 export async function getArticleById(id: string) {
-    const url = `http://localhost:8080/api/articles/${id}`
+    const url = `${BASE_URL}/api/articles/${id}`
 
     const res = await fetch(url)
 
@@ -11,7 +11,7 @@ export async function getArticleById(id: string) {
 }
 
 export async function getInit() {
-    const url = `http://localhost:8080/api/init`
+    const url = `${BASE_URL}/api/init`
 
     const res = await fetch(url)
 
@@ -21,7 +21,7 @@ export async function getInit() {
 }
 
 export async function getUnusedAuthors() {
-    const url = `http://localhost:8080/api/authors`
+    const url = `${BASE_URL}/api/authors`
 
     const res = await fetch(url)
 
@@ -31,13 +31,13 @@ export async function getUnusedAuthors() {
 }
 
 export async function deleteAuthor(id: string) {
-    const url = `http://localhost:8080/api/author/${id}`
+    const url = `${BASE_URL}/author/${id}`
 
     const err = await fetch(url, { method: 'delete' })
 }
 
 export async function createArticle(args: ArticleFullItemResponse) {
-    const response = await fetch('http://localhost:8080/api/article', {
+    const response = await fetch(`${BASE_URL}/api/article`, {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ export async function createArticle(args: ArticleFullItemResponse) {
     return data
 }
 export async function createAuthor(args: Author) {
-    const response = await fetch('http://localhost:8080/api/author', {
+    const response = await fetch(`${BASE_URL}/api/author`, {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ export async function createAuthor(args: Author) {
 }
 
 export async function addAuthor(article_item_id: string | undefined, author_id: string) {
-    const response = await fetch('http://localhost:8080/api/author/move', {
+    const response = await fetch(`${BASE_URL}/api/author/move`, {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
