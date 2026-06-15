@@ -38,6 +38,12 @@ export default function JournalItem({ a }: { a: ArticleFullItemResponse }) {
                 </div>
                 <br />
                 <div style={{ textAlign: 'justify' }}>
+                    <b>Ключевые слова:</b>
+                    <br />
+                    <i>{a.keywords}</i>
+                </div>
+                <br />
+                <div style={{ textAlign: 'justify' }}>
                     <b>Список литературы</b>
                     <br />
                 </div>

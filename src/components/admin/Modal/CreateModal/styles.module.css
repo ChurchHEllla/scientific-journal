@@ -168,8 +168,22 @@
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
 }
 
+.closeButton {
+    background: transparent;
+    border: none;
+
+    font-size: 24px;
+    cursor: pointer;
+
+    padding: 10px 15px; /* увеличивает область клика */
+    line-height: 1;
+
+    color: inherit;
+}
+
 .modalHeader {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 

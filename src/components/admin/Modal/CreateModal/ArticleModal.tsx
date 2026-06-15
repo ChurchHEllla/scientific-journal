@@ -62,9 +62,9 @@ export default function ArticleModal({ init, onClose, onCreated, data }: Props) 
         <div className={styles.modalOverlay}>
             <div className={styles.modal}>
                 <div className={styles.modalHeader}>
-                    <h2>Create ArticleItem</h2>
+                    <h2>{data ? 'Редактировать статью' : 'Создать статью'}</h2>
 
-                    <button onClick={onClose}>X</button>
+                    <button className={styles.closeButton} onClick={onClose}>X</button>
                 </div>
 
                 <input
@@ -214,7 +214,7 @@ export default function ArticleModal({ init, onClose, onCreated, data }: Props) 
                         }
                     }}
                 >
-                    Create
+                    {data? 'Изменить' : 'Создать'}
                 </button>
             </div>
         </div>

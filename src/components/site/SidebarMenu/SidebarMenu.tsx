@@ -85,7 +85,9 @@ export function SidebarMenuItem({
                                     </button>
                                 </div>
                             ) : (
-                                <span className={styles.labelText}>{item.label}</span>
+                                <span
+                                    className={styles.labelText}>{item.label}
+                                </span>
                             )}
                         </div>
                     </div>
