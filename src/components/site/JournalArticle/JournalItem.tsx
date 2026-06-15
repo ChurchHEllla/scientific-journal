@@ -43,9 +43,7 @@ export default function JournalItem({ a }: { a: ArticleFullItemResponse }) {
                 </div>
                 <ol>
                     {a.references?.map((item, index) => (
-                        <li key={index}>
-                            {index + 1}. {item}
-                        </li>
+                        <li key={index}>{item}</li>
                     ))}
                 </ol>
             </div>

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { ArticleFullItemResponse, Author, Init } from '@/models/articles'
 import {
     addAuthor,
@@ -6,35 +6,26 @@ import {
     createAuthor,
     deleteAuthor,
     getUnusedAuthors,
+    updateArticle,
 } from '@/api/client'
 import AuthorInputs from '@components/admin/Modal/CreateModal/AuthorInputs'
 import styles from './styles.module.css'
-export default function ArticleModal({
-    init,
-    onClose,
-    onCreated,
-    data,
-}: {
+
+interface Props {
     init: Init | null
     data?: ArticleFullItemResponse
     onClose: () => void
     onCreated: (article: ArticleFullItemResponse) => void
-}) {
-    const [clickCount, setClickCount] = useState<number>(0)
-
-    const [title, setTitle] = useState('')
-
-    const [abstract, setAbstract] = useState('')
-
-    const [keywords, setKeywords] = useState('')
-
+}
+export default function ArticleModal({ init, onClose, onCreated, data }: Props) {
+    const [title, setTitle] = useState(data?.articleItemTitle ?? '')
+    const [abstract, setAbstract] = useState(data?.abstract ?? '')
+    const [keywords, setKeywords] = useState(data?.keywords ?? '')
+    const [references, setReferences] = useState(data?.references?.join('\n') ?? '')
+    const [groupId, setGroupId] = useState(data?.articleGroupId ?? '')
     const [journalId, setJournalId] = useState('')
 
-    const [groupId, setGroupId] = useState('')
-
     const [authors, setAuthors] = useState<Author[]>([])
-
-    const [references, setReferences] = useState('')
 
     const [draftAuthor, setDraftAuthor] = useState<Author>({
         fullName: '',
@@ -53,19 +44,19 @@ export default function ArticleModal({
             return copy
         })
     }
+
     useEffect(() => {
-        async function loadAuthors() {
-            try {
-                const res = await getUnusedAuthors()
+        async function loadUnusedAuthors() {
+            const res = await getUnusedAuthors()
+            if (!data) {
                 setAuthors(res ?? [])
-            } catch (e) {
-                console.error('Failed load authors', e)
-                setAuthors([])
+            } else {
+                setAuthors([...data.authors!, ...authors])
             }
         }
 
-        loadAuthors()
-    }, [clickCount])
+        loadUnusedAuthors()
+    }, [data])
 
     return (
         <div className={styles.modalOverlay}>
@@ -78,28 +69,28 @@ export default function ArticleModal({
 
                 <input
                     placeholder='Title'
-                    value={data ? data.articleItemTitle : title}
+                    value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     className={styles.input}
                 />
 
                 <textarea
                     placeholder='Abstract'
-                    value={data ? data.abstract : abstract}
+                    value={abstract}
                     onChange={(e) => setAbstract(e.target.value)}
                     className={styles.textarea}
                 />
 
                 <input
                     placeholder='Keywords'
-                    value={data ? data.keywords : keywords}
+                    value={keywords}
                     onChange={(e) => setKeywords(e.target.value)}
                     className={styles.input}
                 />
 
                 <textarea
                     placeholder='References'
-                    value={data ? data.references?.join('\n') : references}
+                    value={references}
                     onChange={(e) => setReferences(e.target.value)}
                     className={styles.input}
                 />
@@ -133,7 +124,7 @@ export default function ArticleModal({
                 </select>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                    Список уже добавленных
+                    Список добавленных авторов
                     <div>
                         {authors?.map((author, index) => (
                             <div
@@ -165,12 +156,11 @@ export default function ArticleModal({
                     <AuthorInputs value={draftAuthor} onChange={setDraftAuthor} />
                     <button
                         disabled={!draftAuthor.fullName || !draftAuthor.bio}
-                        onClick={() => {
+                        onClick={async () => {
                             if (draftAuthor.fullName === '' || draftAuthor.bio === '') {
                                 return
                             } else {
-                                createAuthor(draftAuthor)
-                                setClickCount((prev) => prev + 1)
+                                await createAuthor(draftAuthor)
                                 setAuthors((prev) => [
                                     ...prev,
                                     {
@@ -199,15 +189,24 @@ export default function ArticleModal({
                             }
                         }
                         const args: ArticleFullItemResponse = {
+                            articleItemId: data?.articleItemId ? data.articleItemId : undefined,
                             articleItemTitle: title,
                             abstract: abstract,
                             keywords: keywords,
-                            references: references.split('\n'),
+                            references: references
+                                .split(/\r?\n/)
+                                .map((r) => r.trim())
+                                .filter(Boolean),
                             articleGroupId: groupId,
                         }
-                        const article: ArticleFullItemResponse = await createArticle(args)
+                        console.log('SEND BODY', JSON.stringify(args))
+                        const article: ArticleFullItemResponse = data
+                            ? await updateArticle(data.articleItemId!, args)
+                            : await createArticle(args)
                         onCreated(article)
                         if (authors.length > 0) {
+                            if (data) {
+                            }
                             for (const author of authors) {
                                 const err = await addAuthor(article.articleItemId, author.id!)
                             }

@@ -56,7 +56,7 @@ export default function SidebarItems() {
                             </div>
                         ))
                     ) : (
-                        <SidebarMenu items={TreeBuilder(initData)} />
+                        <SidebarMenu isAdm={true} items={TreeBuilder(initData)} />
                     )}
                 </div>
             </aside>

@@ -1,5 +1,5 @@
 import { ArticleFullItemResponse, Author } from '@/models/articles'
-const BASE_URL = process.env.BASE_URL
+const BASE_URL = 'http://localhost:8080'
 export async function getArticleById(id: string) {
     const url = `${BASE_URL}/api/articles/${id}`
 
@@ -31,7 +31,13 @@ export async function getUnusedAuthors() {
 }
 
 export async function deleteAuthor(id: string) {
-    const url = `${BASE_URL}/author/${id}`
+    const url = `${BASE_URL}/api/author/${id}`
+
+    const err = await fetch(url, { method: 'delete' })
+}
+
+export async function deleteArticle(id: string) {
+    const url = `${BASE_URL}/api/article/${id}`
 
     const err = await fetch(url, { method: 'delete' })
 }
@@ -45,7 +51,7 @@ export async function createArticle(args: ArticleFullItemResponse) {
         body: JSON.stringify({
             articleGroupId: args.articleGroupId,
             articleItemTitle: args.articleItemTitle,
-            reference: args.references,
+            references: args.references,
             abstract: args.abstract,
             keywords: args.keywords,
         }),
@@ -54,6 +60,27 @@ export async function createArticle(args: ArticleFullItemResponse) {
 
     return data
 }
+
+export async function updateArticle(id: string, args: ArticleFullItemResponse) {
+    const response = await fetch(`${BASE_URL}/api/article`, {
+        method: 'put',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            articleItemId: args.articleItemId,
+            articleGroupId: args.articleGroupId,
+            articleItemTitle: args.articleItemTitle,
+            references: args.references,
+            abstract: args.abstract,
+            keywords: args.keywords,
+        }),
+    })
+    const data = await response.json()
+
+    return data
+}
+
 export async function createAuthor(args: Author) {
     const response = await fetch(`${BASE_URL}/api/author`, {
         method: 'post',

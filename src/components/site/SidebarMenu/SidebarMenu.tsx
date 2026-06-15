@@ -6,13 +6,19 @@ import { useRouter } from 'next/navigation' // Используем роутер
 import styles from './SidebarMenu.module.css'
 import type { MenuItem } from '@/models/sidebar_menu'
 
-export default function SidebarMenu({ items }: { items: MenuItem[] }) {
+export default function SidebarMenu({
+    items,
+    isAdm = false,
+}: {
+    items: MenuItem[]
+    isAdm?: boolean
+}) {
     return (
         <div>
             <nav className={styles.sidebar}>
                 <ul className={styles.menuList}>
                     {items.map((item) => (
-                        <SidebarMenuItem key={item.id} item={item} />
+                        <SidebarMenuItem isAdm={isAdm} key={item.id} item={item} />
                     ))}
                 </ul>
             </nav>
@@ -20,7 +26,15 @@ export default function SidebarMenu({ items }: { items: MenuItem[] }) {
     )
 }
 
-export function SidebarMenuItem({ item, level = 0 }: { item: MenuItem; level?: number }) {
+export function SidebarMenuItem({
+    isAdm,
+    item,
+    level = 0,
+}: {
+    isAdm?: boolean
+    item: MenuItem
+    level?: number
+}) {
     const router = useRouter() // Хук для навигации
     const [isOpen, setIsOpen] = useState(false)
     const hasChildren = item.children && item.children.length > 0
@@ -30,12 +44,6 @@ export function SidebarMenuItem({ item, level = 0 }: { item: MenuItem; level?: n
         e.stopPropagation()
         setIsOpen(!isOpen)
     }
-
-    /*const handleNavigate = () => {
-        if (item.href) {
-            router.push(item.href); // Навигация без перезагрузки страницы
-        }
-    };*/
 
     return (
         <li className={styles.menuItem} style={{ paddingLeft: `${level * 20}px` }}>
@@ -52,29 +60,50 @@ export function SidebarMenuItem({ item, level = 0 }: { item: MenuItem; level?: n
                         </button>
 
                         {/* Текст названия журнала. Если есть href - делаем кликабельным */}
-                        {item.children ? (
-                            <button
-                                type='button'
-                                className={styles.labelButton}
-                                onClick={handleToggle}
-                            >
-                                {item.label}
-                            </button>
-                        ) : (
-                            <span className={styles.labelText}>{item.label}</span>
-                        )}
+                        <div>
+                            {item.children ? (
+                                <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                    <button
+                                        type='button'
+                                        className={styles.labelButton}
+                                        onClick={handleToggle}
+                                    >
+                                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                            {item.label}
+                                            {isAdm && (
+                                                <small
+                                                    style={{
+                                                        whiteSpace: 'nowrap',
+                                                        color: 'gray',
+                                                        fontWeight: 'normal',
+                                                    }}
+                                                >
+                                                    {item.id}
+                                                </small>
+                                            )}
+                                        </div>
+                                    </button>
+                                </div>
+                            ) : (
+                                <span className={styles.labelText}>{item.label}</span>
+                            )}
+                        </div>
                     </div>
 
                     {isOpen && (
                         <ul className={styles.subMenu}>
                             {item.children?.map((child) => (
-                                <SidebarMenuItem key={child.id} item={child} level={level + 1} />
+                                <SidebarMenuItem
+                                    isAdm={isAdm}
+                                    key={child.id}
+                                    item={child}
+                                    level={level + 1}
+                                />
                             ))}
                         </ul>
                     )}
                 </>
             ) : (
-                // Конечный элемент. Можно использовать обычный <a> или button с router.push
                 <button
                     type='button'
                     className={styles.leafButton}
