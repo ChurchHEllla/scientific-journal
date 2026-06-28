@@ -11,12 +11,11 @@ export function journals(init: Init): MenuItem {
         id: 'journal-prospects',
         label: 'Выпуски журнала',
         href: '/',
-        children: TreeBuilder(init),
-    }
-}
-
-/*
-* [
+        children: [
+            {
+                id: '2023',
+                label: '2023',
+                children: [
                     {
                         id: '2-2023',
                         label: '2-2023',
@@ -29,6 +28,7 @@ export function journals(init: Init): MenuItem {
                     },
                 ],
             },
+
             {
                 id: '2024',
                 label: '2024',
@@ -40,4 +40,11 @@ export function journals(init: Init): MenuItem {
                     },
                 ],
             },
-        ],*/
+            {
+                id: 'данные с сервера (TODOдописать mapper*)',
+                label: 'Данные с сервера ( TODO дописать mapper*)',
+                children: TreeBuilder(init),
+            },
+        ],
+    }
+}
