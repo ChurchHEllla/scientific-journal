@@ -42,7 +42,7 @@ export async function deleteArticle(id: string) {
     const err = await fetch(url, { method: 'delete' })
 }
 
-export async function createArticle(args: ArticleFullItemResponse) {
+export async function apiCreateArticle(args: ArticleFullItemResponse) {
     const response = await fetch(`${BASE_URL}/api/article`, {
         method: 'post',
         headers: {
@@ -61,7 +61,7 @@ export async function createArticle(args: ArticleFullItemResponse) {
     return data
 }
 
-export async function updateArticle(id: string, args: ArticleFullItemResponse) {
+export async function apiUpdateArticle(id: string, args: ArticleFullItemResponse) {
     const response = await fetch(`${BASE_URL}/api/article`, {
         method: 'put',
         headers: {
@@ -81,7 +81,7 @@ export async function updateArticle(id: string, args: ArticleFullItemResponse) {
     return data
 }
 
-export async function createAuthor(args: Author) {
+export async function apiCreateAuthor(args: Author) {
     const response = await fetch(`${BASE_URL}/api/author`, {
         method: 'post',
         headers: {
@@ -98,7 +98,7 @@ export async function createAuthor(args: Author) {
     return data
 }
 
-export async function addAuthor(article_item_id: string | undefined, author_id: string) {
+export async function apiAddAuthor(article_item_id: string | undefined, author_id: string) {
     const response = await fetch(`${BASE_URL}/api/author/move`, {
         method: 'post',
         headers: {
@@ -112,4 +112,15 @@ export async function addAuthor(article_item_id: string | undefined, author_id: 
 
     const data = await response.json()
     return data
+}
+
+export async function apiRemoveAuthor(article_item_id: string, author_id: string) {
+    await fetch(`${BASE_URL}/api/author/move`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            article_item_id,
+            author_id,
+        }),
+    })
 }

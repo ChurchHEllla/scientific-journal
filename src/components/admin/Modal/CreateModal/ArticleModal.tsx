@@ -1,12 +1,14 @@
 import { useEffect, useMemo, useState } from 'react'
 import { ArticleFullItemResponse, Author, Init } from '@/models/articles'
 import {
-    addAuthor,
-    createArticle,
-    createAuthor,
+    apiAddAuthor,
+    apiCreateArticle,
+    apiCreateAuthor,
+    apiRemoveAuthor,
+    apiUpdateArticle,
     deleteAuthor,
+    getArticleById,
     getUnusedAuthors,
-    updateArticle,
 } from '@/api/client'
 import AuthorInputs from '@components/admin/Modal/CreateModal/AuthorInputs'
 import styles from './styles.module.css'
@@ -17,15 +19,23 @@ interface Props {
     onClose: () => void
     onCreated: (article: ArticleFullItemResponse) => void
 }
+
 export default function ArticleModal({ init, onClose, onCreated, data }: Props) {
     const [title, setTitle] = useState(data?.articleItemTitle ?? '')
     const [abstract, setAbstract] = useState(data?.abstract ?? '')
     const [keywords, setKeywords] = useState(data?.keywords ?? '')
     const [references, setReferences] = useState(data?.references?.join('\n') ?? '')
     const [groupId, setGroupId] = useState(data?.articleGroupId ?? '')
-    const [journalId, setJournalId] = useState('')
+    const [journalId, setJournalId] = useState(() => {
+        if (!data?.articleGroupId || !init) return ''
+        const group = init.groups.find((g) => g.articleGroupId === data.articleGroupId)
+        return group?.journalId ?? ''
+    })
 
-    const [authors, setAuthors] = useState<Author[]>([])
+    const [authors, setAuthors] = useState<Author[]>(data?.authors ?? [])
+    const [initialAuthorIds] = useState<Set<string>>(
+        () => new Set((data?.authors ?? []).map((a) => a.id!))
+    )
 
     const [draftAuthor, setDraftAuthor] = useState<Author>({
         fullName: '',
@@ -46,25 +56,85 @@ export default function ArticleModal({ init, onClose, onCreated, data }: Props) 
     }
 
     useEffect(() => {
+        if (data) return
+
         async function loadUnusedAuthors() {
             const res = await getUnusedAuthors()
-            if (!data) {
-                setAuthors(res ?? [])
-            } else {
-                setAuthors([...data.authors!, ...authors])
-            }
+            setAuthors(res ?? [])
         }
 
         loadUnusedAuthors()
-    }, [data])
+    }, [])
+
+    const handleRemoveAuthor = (index: number, author: Author) => {
+        setAuthors((prev) => prev.filter((_, i) => i !== index))
+        if (!data && author.id) {
+            deleteAuthor(author.id)
+        }
+    }
+
+    const handleAddDraftAuthor = async () => {
+        if (!draftAuthor.fullName || !draftAuthor.bio) return
+
+        const created: Author = await apiCreateAuthor(draftAuthor)
+        setAuthors((prev) => [...prev, created])
+        setDraftAuthor({ fullName: '', bio: '', email: '' })
+    }
+
+    const handleSubmit = async () => {
+        for (const author of authors) {
+            if (!author.fullName || !author.bio) return
+        }
+
+        const args: ArticleFullItemResponse = {
+            articleItemId: data?.articleItemId,
+            articleItemTitle: title,
+            abstract,
+            keywords,
+            references: references
+                .split(/\r?\n/)
+                .map((r) => r.trim())
+                .filter(Boolean),
+            articleGroupId: groupId,
+        }
+
+        const article: ArticleFullItemResponse = data
+            ? await apiUpdateArticle(data.articleItemId!, args)
+            : await apiCreateArticle(args)
+
+        onCreated(article)
+
+        if (data) {
+            const finalAuthorIds = new Set(authors.map((a) => a.id!))
+
+            for (const id of initialAuthorIds) {
+                if (!finalAuthorIds.has(id)) {
+                    await apiRemoveAuthor(article.articleItemId!, id)
+                }
+            }
+            for (const author of authors) {
+                if (!initialAuthorIds.has(author.id!)) {
+                    await apiAddAuthor(article.articleItemId, author.id!)
+                }
+            }
+        } else {
+            for (const author of authors) {
+                await apiAddAuthor(article.articleItemId, author.id!)
+            }
+        }
+        const fresh = await getArticleById(article.articleItemId!)
+        onCreated(fresh)
+        onClose()
+    }
 
     return (
         <div className={styles.modalOverlay}>
             <div className={styles.modal}>
                 <div className={styles.modalHeader}>
                     <h2>{data ? 'Редактировать статью' : 'Создать статью'}</h2>
-
-                    <button className={styles.closeButton} onClick={onClose}>X</button>
+                    <button className={styles.closeButton} onClick={onClose}>
+                        X
+                    </button>
                 </div>
 
                 <input
@@ -97,11 +167,13 @@ export default function ArticleModal({ init, onClose, onCreated, data }: Props) 
 
                 <select
                     value={journalId}
-                    onChange={(e) => setJournalId(e.target.value)}
+                    onChange={(e) => {
+                        setJournalId(e.target.value)
+                        setGroupId('')
+                    }}
                     className={styles.input}
                 >
                     <option value=''>Select journal</option>
-
                     {init?.journals.map((j) => (
                         <option key={j.journalId} value={j.journalId}>
                             {j.title}
@@ -115,7 +187,6 @@ export default function ArticleModal({ init, onClose, onCreated, data }: Props) 
                     className={styles.input}
                 >
                     <option value=''>Select group</option>
-
                     {availableGroups?.map((g) => (
                         <option key={g.articleGroupId} value={g.articleGroupId}>
                             {g.articleGroupTitle}
@@ -124,97 +195,37 @@ export default function ArticleModal({ init, onClose, onCreated, data }: Props) 
                 </select>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                    Список добавленных авторов
+                    <span>Список добавленных авторов</span>
                     <div>
-                        {authors?.map((author, index) => (
+                        {authors.map((author, index) => (
                             <div
-                                key={index}
-                                style={{
-                                    display: 'flex',
-                                    justifyContent: 'left',
-                                    gap: '10px',
-                                    marginBottom: '10px',
-                                }}
+                                key={author.id ?? index}
+                                style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}
                             >
                                 <AuthorInputs
                                     isChange={false}
                                     value={author}
                                     onChange={(updated) => updateAuthor(index, updated)}
                                 />
-                                <button
-                                    onClick={() => {
-                                        setAuthors((prev) => prev.filter((_, i) => i !== index))
-                                        deleteAuthor(author.id!)
-                                    }}
-                                >
+                                <button onClick={() => handleRemoveAuthor(index, author)}>
                                     Удалить
                                 </button>
                             </div>
                         ))}
                     </div>
-                    Новый автор
+
+                    <span>Новый автор</span>
                     <AuthorInputs value={draftAuthor} onChange={setDraftAuthor} />
                     <button
                         disabled={!draftAuthor.fullName || !draftAuthor.bio}
-                        onClick={async () => {
-                            if (draftAuthor.fullName === '' || draftAuthor.bio === '') {
-                                return
-                            } else {
-                                await createAuthor(draftAuthor)
-                                setAuthors((prev) => [
-                                    ...prev,
-                                    {
-                                        ...draftAuthor,
-                                    },
-                                ])
-
-                                setDraftAuthor({
-                                    fullName: '',
-                                    bio: '',
-                                    email: '',
-                                })
-                            }
-                        }}
+                        onClick={handleAddDraftAuthor}
                     >
                         Добавить автора
                     </button>
                 </div>
 
-                <button
-                    className={styles.createButton}
-                    onClick={async () => {
-                        for (const author of authors) {
-                            if (author.fullName === '' || author.bio === '') {
-                                return
-                            }
-                        }
-                        const args: ArticleFullItemResponse = {
-                            articleItemId: data?.articleItemId ? data.articleItemId : undefined,
-                            articleItemTitle: title,
-                            abstract: abstract,
-                            keywords: keywords,
-                            references: references
-                                .split(/\r?\n/)
-                                .map((r) => r.trim())
-                                .filter(Boolean),
-                            articleGroupId: groupId,
-                        }
-                        console.log('SEND BODY', JSON.stringify(args))
-                        const article: ArticleFullItemResponse = data
-                            ? await updateArticle(data.articleItemId!, args)
-                            : await createArticle(args)
-                        onCreated(article)
-                        if (authors.length > 0) {
-                            if (data) {
-                            }
-                            for (const author of authors) {
-                                const err = await addAuthor(article.articleItemId, author.id!)
-                            }
-                            onClose()
-                        }
-                    }}
-                >
-                    {data? 'Изменить' : 'Создать'}
+                <button className={styles.createButton} onClick={handleSubmit}>
+                    {data ? 'Изменить' : 'Создать'}
                 </button>
             </div>
         </div>

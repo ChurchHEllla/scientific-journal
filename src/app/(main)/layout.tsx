@@ -5,6 +5,9 @@ import styles from '@/app/(main)/page.module.css'
 import Header from '@components/site/Header/Header'
 import SidebarMenu from '@components/site/SidebarMenu/SidebarMenu'
 import { index } from '@data/sidebar'
+import { InitProvider, useInit } from '@/app/(main)/provider'
+import { getInit } from '@/api/client'
+import { Init } from '@/models/articles'
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -21,28 +24,31 @@ export const metadata: Metadata = {
     description: 'Каталог || Наука и техника в дорожной отрасли',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode
 }>) {
+    const init: Init = await getInit()
     return (
         <html lang='en' className={`${geistSans.variable} ${geistMono.variable}`}>
             <body>
-                <div className={styles.page}>
-                    {/* Шапка с логотипом */}
-                    <Header></Header>
-                    {/* Основная часть: Сайдбар + Контент */}
-                    <div className={styles.container}>
-                        <aside className={styles.sidebarWrapper}>
-                            <SidebarMenu items={index} />
-                        </aside>
+                <InitProvider initial={init}>
+                    <div className={styles.page}>
+                        {/* Шапка с логотипом */}
+                        <Header></Header>
+                        {/* Основная часть: Сайдбар + Контент */}
+                        <div className={styles.container}>
+                            <aside className={styles.sidebarWrapper}>
+                                <SidebarMenu items={index(init)} />
+                            </aside>
 
-                        <main className={styles.mainContent}>
-                            <div className={styles.intro}>{children}</div>
-                        </main>
+                            <main className={styles.mainContent}>
+                                <div className={styles.intro}>{children}</div>
+                            </main>
+                        </div>
                     </div>
-                </div>
+                </InitProvider>
             </body>
         </html>
     )

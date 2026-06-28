@@ -1,7 +1,8 @@
 import { index } from '@data/sidebar'
-import { findMenuItemById } from '@/utils/find_menu_item'
 import JournalArticle from '@components/site/JournalArticle/JournalArticle'
 import { journals } from '@data/articles'
+import { useInit } from '@/app/(admin)/admin/provider'
+import { getArticleById } from '@/api/client'
 
 interface Props {
     params: Promise<{
@@ -12,18 +13,16 @@ interface Props {
 export default async function JournalPage({ params }: Props) {
     const { labelKey } = await params
 
-    const article = journals.get(labelKey)
+    const article = getArticleById(labelKey)
 
-    // 1. Ищем данные журнала в вашем массиве по ID
-    const journal = findMenuItemById(index, labelKey)
-    // 2. Если журнал не найден (например, пользователь ввел несуществующий ID)
+    const journal = labelKey
     if (!journal || !article) {
         return <div>art</div>
     }
     return (
         <div>
             <p>Это страница журнала с ID: {labelKey}</p>
-            <JournalArticle a={article.children[0]} />
+            <JournalArticle a={article} />
         </div>
     )
 }

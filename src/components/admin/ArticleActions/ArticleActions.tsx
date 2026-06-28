@@ -2,7 +2,7 @@
 
 import styles from '@components/admin/ArticleActions/styles.module.css'
 import { useInit } from '@/app/(admin)/admin/provider'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ArticleModal from '@components/admin/Modal/CreateModal/ArticleModal'
 import { ArticleFullItemResponse, Init } from '@/models/articles'
 import { deleteArticle, getInit } from '@/api/client'
