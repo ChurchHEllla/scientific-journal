@@ -1,3 +1,8 @@
+__Бэкенд__ роект (тут фронтенд) - админка для несуществующего журнала, поднимается локально\
+Боилерплейт блаблабла
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

@@ -1,15 +1,15 @@
 info:
-  name: delete group
-  type: http
-  seq: 1
+    name: delete group
+    type: http
+    seq: 1
 
 http:
-  method: delete
-  url: http://localhost:8080/api/group/550e8400-e29b-41d4-a716-446655440003
-  auth: inherit
+    method: delete
+    url: http://localhost:8080/api/group/550e8400-e29b-41d4-a716-446655440003
+    auth: inherit
 
 settings:
-  encodeUrl: false
-  timeout: 0
-  followRedirects: true
-  maxRedirects: 5
+    encodeUrl: false
+    timeout: 0
+    followRedirects: true
+    maxRedirects: 5

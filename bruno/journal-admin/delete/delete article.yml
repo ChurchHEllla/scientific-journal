@@ -1,15 +1,15 @@
 info:
-  name: delete article
-  type: http
-  seq: 3
+    name: delete article
+    type: http
+    seq: 3
 
 http:
-  method: delete
-  url: http://localhost:8080/api/article/33333333-3333-3333-3333-333333333333
-  auth: inherit
+    method: delete
+    url: http://localhost:8080/api/article/3b824b2e-7ae2-4a16-ad36-e0d8e37b522c
+    auth: inherit
 
 settings:
-  encodeUrl: false
-  timeout: 0
-  followRedirects: true
-  maxRedirects: 5
+    encodeUrl: false
+    timeout: 0
+    followRedirects: true
+    maxRedirects: 5

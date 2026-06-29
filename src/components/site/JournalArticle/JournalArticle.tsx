@@ -1,20 +1,20 @@
 'use client'
 
-import type { Journal, ArticleGroup, ArticleItem } from '@/models/articles'
+import type { InitJournalNode, InitGroupNode, InitArticleNode } from '@/models/articles'
 import JournalItem from '@components/site/JournalArticle/JournalItem'
-export default function JournalArticle({ a }: { a: Journal }) {
+export default function JournalArticle({ a }: { a: InitJournalNode }) {
     return (
         <div>
-            <h1 style={{ textAlign: 'center' }}>{a.articleTitle}</h1>
+            <h1 style={{ textAlign: 'center' }}>{a.journal.title}</h1>
             <div>
                 <h4 style={{ textAlign: 'justify' }}>Содержание</h4>
                 <hr />
-                {a.articleGroups.map((group: ArticleGroup) => (
-                    <section key={group.articleGroupTitle}>
-                        <h3 style={{ textAlign: 'center' }}>{group.articleGroupTitle}</h3>
-                        {group.articleItems.map((item: ArticleItem) => (
-                            <div key={item.articleItemTitle}>
-                                <JournalItem a={item} />
+                {a.children.map((g: InitGroupNode) => (
+                    <section key={g.group.articleGroupTitle}>
+                        <h3 style={{ textAlign: 'center' }}>{g.group.articleGroupTitle}</h3>
+                        {g.children.map((item: InitArticleNode) => (
+                            <div key={item.article.articleItemTitle}>
+                                <JournalItem a={item.article} />
                             </div>
                         ))}
                     </section>

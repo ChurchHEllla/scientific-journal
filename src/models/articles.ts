@@ -5,22 +5,23 @@ export interface Journal {
     journalId?: string
     labelKey: string
     data: string
-    articleTitle: string
-    articleGroups: ArticleGroup[]
+    title: string
 }
 export interface ArticleGroup {
+    journalId?: string
     articleGroupId?: string
     articleGroupTitle: string
-    articleItems: ArticleItem[]
 }
 
-export interface ArticleItem {
+export interface ArticleFullItemResponse {
+    articleGroupId?: string
     articleItemId?: string
     articleItemTitle: string
-    authors: Author[]
     abstract: string
-    keywords?: string[]
-    references: string[]
+    keywords?: string
+    references?: string[]
+    authors?: Author[]
+    createdAt?: string
 }
 
 export interface Author {
@@ -28,4 +29,28 @@ export interface Author {
     fullName: string
     bio: string
     email?: string
+}
+
+export interface Init {
+    journals: Journal[]
+    groups: ArticleGroup[]
+    articles: ArticleFullItemResponse[]
+}
+
+export interface InitArticleNode {
+    article: ArticleFullItemResponse
+}
+
+export interface InitGroupNode {
+    group: ArticleGroup
+    children: InitArticleNode[]
+}
+
+export interface InitJournalNode {
+    journal: Journal
+    children: InitGroupNode[]
+}
+
+export interface InitResponse {
+    children: InitJournalNode[]
 }

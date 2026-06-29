@@ -1,13 +1,10 @@
 'use client'
 
-import dynamic from "next/dynamic"
+import dynamic from 'next/dynamic'
 
-const PdfViewer = dynamic(
-    () => import('@/components/PdfViewer'),
-    {
-        loading: () => <p>Загрузка PDF...</p>,
-    }
-)
+const PdfViewer = dynamic(() => import('@/components/PdfViewer'), {
+    loading: () => <p>Загрузка PDF...</p>,
+})
 
 export default function AboutPage() {
     return (

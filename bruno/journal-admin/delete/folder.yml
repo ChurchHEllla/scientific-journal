@@ -1,7 +1,7 @@
 info:
-  name: delete
-  type: folder
-  seq: 6
+    name: delete
+    type: folder
+    seq: 6
 
 request:
-  auth: inherit
+    auth: inherit

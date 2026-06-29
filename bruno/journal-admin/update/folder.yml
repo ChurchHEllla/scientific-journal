@@ -1,7 +1,7 @@
 info:
-  name: update
-  type: folder
-  seq: 7
+    name: update
+    type: folder
+    seq: 7
 
 request:
-  auth: inherit
+    auth: inherit
